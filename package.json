@@ -43,7 +43,6 @@
     "sonner": "^2.0.3",
     "superjson": "^2.2.1",
     "tailwind-merge": "^3.2.0",
-    "web": "link:@libsql/client/web",
     "zod": "^3.24.2"
   },
   "devDependencies": {

@@ -77,9 +77,6 @@ importers:
       tailwind-merge:
         specifier: ^3.2.0
         version: 3.2.0
-      web:
-        specifier: link:@libsql/client/web
-        version: link:@libsql/client/web
       zod:
         specifier: ^3.24.2
         version: 3.24.3
