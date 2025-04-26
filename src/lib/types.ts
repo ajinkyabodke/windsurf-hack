@@ -154,7 +154,7 @@ export type SegmentEffort = {
   segment: Segment;
   kom_rank?: number | null;
   pr_rank?: number | null;
-  achievements?: any[]; // Replace with a more specific type if available
+  achievements?: unknown[]; // Replace with a more specific type if available
   hidden?: boolean;
 };
 
@@ -236,4 +236,56 @@ export type KudosUser = {
   display_name: string;
   avatar_url: string;
   show_name: boolean;
+};
+
+export type StravaStats = {
+  recent_ride_totals?: {
+    count: number;
+    distance: number;
+    moving_time: number;
+    elapsed_time: number;
+    elevation_gain: number;
+  };
+  recent_run_totals?: {
+    count: number;
+    distance: number;
+    moving_time: number;
+    elapsed_time: number;
+    elevation_gain: number;
+  };
+  all_ride_totals?: {
+    count: number;
+    distance: number;
+    moving_time: number;
+    elapsed_time: number;
+    elevation_gain: number;
+  };
+  all_run_totals?: {
+    count: number;
+    distance: number;
+    moving_time: number;
+    elapsed_time: number;
+    elevation_gain: number;
+  };
+};
+
+export type StravaActivity = {
+  id: number;
+  name: string;
+  distance: number;
+  moving_time: number;
+  elapsed_time: number;
+  total_elevation_gain: number;
+  type: string;
+  start_date: string;
+};
+
+export type StravaProfile = {
+  id: number;
+  username: string;
+  firstname: string;
+  lastname: string;
+  city: string;
+  country: string;
+  profile: string;
 };

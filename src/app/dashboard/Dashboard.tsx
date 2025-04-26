@@ -1,58 +1,11 @@
 "use client";
 
+import {
+  type StravaActivity,
+  type StravaProfile,
+  type StravaStats,
+} from "@/lib/types";
 import { useState } from "react";
-
-type StravaStats = {
-  recent_ride_totals?: {
-    count: number;
-    distance: number;
-    moving_time: number;
-    elapsed_time: number;
-    elevation_gain: number;
-  };
-  recent_run_totals?: {
-    count: number;
-    distance: number;
-    moving_time: number;
-    elapsed_time: number;
-    elevation_gain: number;
-  };
-  all_ride_totals?: {
-    count: number;
-    distance: number;
-    moving_time: number;
-    elapsed_time: number;
-    elevation_gain: number;
-  };
-  all_run_totals?: {
-    count: number;
-    distance: number;
-    moving_time: number;
-    elapsed_time: number;
-    elevation_gain: number;
-  };
-};
-
-type StravaActivity = {
-  id: number;
-  name: string;
-  distance: number;
-  moving_time: number;
-  elapsed_time: number;
-  total_elevation_gain: number;
-  type: string;
-  start_date: string;
-};
-
-type StravaProfile = {
-  id: number;
-  username: string;
-  firstname: string;
-  lastname: string;
-  city: string;
-  country: string;
-  profile: string;
-};
 
 type DashboardProps = {
   stravaData?: {
