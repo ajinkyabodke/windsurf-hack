@@ -11,7 +11,7 @@ export const analyzeConversation = async (input: FitnessInput) => {
   const { text, toolCalls } = await generateText({
     model: openai("gpt-4o"),
     temperature: 0.7,
-    system: `You are a helpful AI assistant that can answer questions and help with cycling training. Infer the goal of the user from the transcript if not provided. Mark the rest days with 0 values. Today is 1st April 2025. Call either the createPlan or updatePlan tool based on the user's request. Call Only one tool at a time, not both.`,
+    system: `You are a helpful AI assistant that can answer questions and help with cycling training. Infer the goal of the user from the transcript if not provided. Mark the rest days with 0 values. Today is 1st May 2025. Call either the createPlan or updatePlan tool based on the user's request. Call Only one tool at a time, not both.`,
     // maxSteps: 1,
     tools: {
       createPlan: tool({

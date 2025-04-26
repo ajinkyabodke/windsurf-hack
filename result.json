@@ -1,0 +1,622 @@
+{
+  "text": "",
+  "toolCalls": [
+    {
+      "type": "tool-call",
+      "toolCallId": "call_bQ1sZ85dIt0v7g8E893S2Osq",
+      "toolName": "createPlan",
+      "args": {
+        "plan": "A comprehensive training plan to prepare Ajinkya for a Himalayan race in August, focusing on building endurance, climbing ability, and overall fitness over the next 30 days.",
+        "day_wise": [
+          {
+            "title": "Rest Day",
+            "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+            "date": "2025-05-01",
+            "duration": "0",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Base Endurance Ride",
+            "description": "Ride at a steady pace for 90 minutes on flat terrain to build your aerobic base.",
+            "date": "2025-05-02",
+            "duration": "90",
+            "distance_km": "40",
+            "elevation_gain": "200",
+            "average_speed": "27",
+            "average_heartrate": "130"
+          },
+          {
+            "title": "Hill Repeats",
+            "description": "Find a hill and do 5 repeats, focusing on maintaining a steady pace. Rest for 5 minutes between each repeat.",
+            "date": "2025-05-03",
+            "duration": "60",
+            "distance_km": "30",
+            "elevation_gain": "800",
+            "average_speed": "20",
+            "average_heartrate": "150"
+          },
+          {
+            "title": "Recovery Ride",
+            "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+            "date": "2025-05-04",
+            "duration": "45",
+            "distance_km": "20",
+            "elevation_gain": "100",
+            "average_speed": "18",
+            "average_heartrate": "115"
+          },
+          {
+            "title": "Tempo Ride",
+            "description": "Ride at a tempo pace, slightly below race pace, for 60 minutes. Focus on maintaining a consistent speed and cadence.",
+            "date": "2025-05-05",
+            "duration": "60",
+            "distance_km": "35",
+            "elevation_gain": "300",
+            "average_speed": "35",
+            "average_heartrate": "145"
+          },
+          {
+            "title": "Rest Day",
+            "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+            "date": "2025-05-06",
+            "duration": "0",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Long Endurance Ride",
+            "description": "Go for a long ride to build endurance. Focus on maintaining a steady pace.",
+            "date": "2025-05-07",
+            "duration": "180",
+            "distance_km": "80",
+            "elevation_gain": "500",
+            "average_speed": "27",
+            "average_heartrate": "135"
+          },
+          {
+            "title": "Strength Training",
+            "description": "Off-bike strength training focusing on core and leg strength.",
+            "date": "2025-05-08",
+            "duration": "60",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Hill Climb Simulation",
+            "description": "Simulate a long hill climb by finding a long steady climb and maintaining a steady pace. Focus on pacing and breathing.",
+            "date": "2025-05-09",
+            "duration": "90",
+            "distance_km": "40",
+            "elevation_gain": "1000",
+            "average_speed": "20",
+            "average_heartrate": "150"
+          },
+          {
+            "title": "Recovery Ride",
+            "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+            "date": "2025-05-10",
+            "duration": "45",
+            "distance_km": "20",
+            "elevation_gain": "100",
+            "average_speed": "18",
+            "average_heartrate": "115"
+          },
+          {
+            "title": "Threshold Intervals",
+            "description": "Perform intervals at your threshold pace to improve your lactate threshold. 5x5 minutes with 5 minutes rest between each.",
+            "date": "2025-05-11",
+            "duration": "60",
+            "distance_km": "30",
+            "elevation_gain": "300",
+            "average_speed": "30",
+            "average_heartrate": "160"
+          },
+          {
+            "title": "Rest Day",
+            "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+            "date": "2025-05-12",
+            "duration": "0",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Base Endurance Ride",
+            "description": "Ride at a steady pace for 90 minutes on flat terrain to build your aerobic base.",
+            "date": "2025-05-13",
+            "duration": "90",
+            "distance_km": "40",
+            "elevation_gain": "200",
+            "average_speed": "27",
+            "average_heartrate": "130"
+          },
+          {
+            "title": "Hill Repeats",
+            "description": "Find a hill and do 6 repeats, focusing on maintaining a steady pace. Rest for 5 minutes between each repeat.",
+            "date": "2025-05-14",
+            "duration": "70",
+            "distance_km": "35",
+            "elevation_gain": "900",
+            "average_speed": "20",
+            "average_heartrate": "150"
+          },
+          {
+            "title": "Recovery Ride",
+            "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+            "date": "2025-05-15",
+            "duration": "45",
+            "distance_km": "20",
+            "elevation_gain": "100",
+            "average_speed": "18",
+            "average_heartrate": "115"
+          },
+          {
+            "title": "Tempo Ride",
+            "description": "Ride at a tempo pace, slightly below race pace, for 70 minutes. Focus on maintaining a consistent speed and cadence.",
+            "date": "2025-05-16",
+            "duration": "70",
+            "distance_km": "40",
+            "elevation_gain": "400",
+            "average_speed": "35",
+            "average_heartrate": "145"
+          },
+          {
+            "title": "Rest Day",
+            "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+            "date": "2025-05-17",
+            "duration": "0",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Long Endurance Ride",
+            "description": "Go for a long ride to build endurance. Focus on maintaining a steady pace.",
+            "date": "2025-05-18",
+            "duration": "210",
+            "distance_km": "90",
+            "elevation_gain": "600",
+            "average_speed": "27",
+            "average_heartrate": "135"
+          },
+          {
+            "title": "Strength Training",
+            "description": "Off-bike strength training focusing on core and leg strength.",
+            "date": "2025-05-19",
+            "duration": "60",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Hill Climb Simulation",
+            "description": "Simulate a long hill climb by finding a long steady climb and maintaining a steady pace. Focus on pacing and breathing.",
+            "date": "2025-05-20",
+            "duration": "90",
+            "distance_km": "40",
+            "elevation_gain": "1000",
+            "average_speed": "20",
+            "average_heartrate": "150"
+          },
+          {
+            "title": "Recovery Ride",
+            "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+            "date": "2025-05-21",
+            "duration": "45",
+            "distance_km": "20",
+            "elevation_gain": "100",
+            "average_speed": "18",
+            "average_heartrate": "115"
+          },
+          {
+            "title": "Threshold Intervals",
+            "description": "Perform intervals at your threshold pace to improve your lactate threshold. 5x6 minutes with 5 minutes rest between each.",
+            "date": "2025-05-22",
+            "duration": "70",
+            "distance_km": "35",
+            "elevation_gain": "400",
+            "average_speed": "30",
+            "average_heartrate": "160"
+          },
+          {
+            "title": "Rest Day",
+            "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+            "date": "2025-05-23",
+            "duration": "0",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Base Endurance Ride",
+            "description": "Ride at a steady pace for 100 minutes on flat terrain to build your aerobic base.",
+            "date": "2025-05-24",
+            "duration": "100",
+            "distance_km": "45",
+            "elevation_gain": "250",
+            "average_speed": "27",
+            "average_heartrate": "130"
+          },
+          {
+            "title": "Hill Repeats",
+            "description": "Find a hill and do 7 repeats, focusing on maintaining a steady pace. Rest for 5 minutes between each repeat.",
+            "date": "2025-05-25",
+            "duration": "80",
+            "distance_km": "40",
+            "elevation_gain": "1000",
+            "average_speed": "20",
+            "average_heartrate": "150"
+          },
+          {
+            "title": "Recovery Ride",
+            "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+            "date": "2025-05-26",
+            "duration": "45",
+            "distance_km": "20",
+            "elevation_gain": "100",
+            "average_speed": "18",
+            "average_heartrate": "115"
+          },
+          {
+            "title": "Tempo Ride",
+            "description": "Ride at a tempo pace, slightly below race pace, for 80 minutes. Focus on maintaining a consistent speed and cadence.",
+            "date": "2025-05-27",
+            "duration": "80",
+            "distance_km": "45",
+            "elevation_gain": "500",
+            "average_speed": "35",
+            "average_heartrate": "145"
+          },
+          {
+            "title": "Rest Day",
+            "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+            "date": "2025-05-28",
+            "duration": "0",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          },
+          {
+            "title": "Long Endurance Ride",
+            "description": "Go for a long ride to build endurance. Focus on maintaining a steady pace.",
+            "date": "2025-05-29",
+            "duration": "240",
+            "distance_km": "100",
+            "elevation_gain": "700",
+            "average_speed": "25",
+            "average_heartrate": "135"
+          },
+          {
+            "title": "Strength Training",
+            "description": "Off-bike strength training focusing on core and leg strength.",
+            "date": "2025-05-30",
+            "duration": "60",
+            "distance_km": "0",
+            "elevation_gain": "0",
+            "average_speed": "0",
+            "average_heartrate": "0"
+          }
+        ],
+        "goal": "Prepare for a Himalayan race in August by building endurance, climbing ability, and overall fitness."
+      }
+    }
+  ],
+  "result": {
+    "plan": "A comprehensive training plan to prepare Ajinkya for a Himalayan race in August, focusing on building endurance, climbing ability, and overall fitness over the next 30 days.",
+    "day_wise": [
+      {
+        "title": "Rest Day",
+        "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+        "date": "2025-05-01",
+        "duration": "0",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Base Endurance Ride",
+        "description": "Ride at a steady pace for 90 minutes on flat terrain to build your aerobic base.",
+        "date": "2025-05-02",
+        "duration": "90",
+        "distance_km": "40",
+        "elevation_gain": "200",
+        "average_speed": "27",
+        "average_heartrate": "130"
+      },
+      {
+        "title": "Hill Repeats",
+        "description": "Find a hill and do 5 repeats, focusing on maintaining a steady pace. Rest for 5 minutes between each repeat.",
+        "date": "2025-05-03",
+        "duration": "60",
+        "distance_km": "30",
+        "elevation_gain": "800",
+        "average_speed": "20",
+        "average_heartrate": "150"
+      },
+      {
+        "title": "Recovery Ride",
+        "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+        "date": "2025-05-04",
+        "duration": "45",
+        "distance_km": "20",
+        "elevation_gain": "100",
+        "average_speed": "18",
+        "average_heartrate": "115"
+      },
+      {
+        "title": "Tempo Ride",
+        "description": "Ride at a tempo pace, slightly below race pace, for 60 minutes. Focus on maintaining a consistent speed and cadence.",
+        "date": "2025-05-05",
+        "duration": "60",
+        "distance_km": "35",
+        "elevation_gain": "300",
+        "average_speed": "35",
+        "average_heartrate": "145"
+      },
+      {
+        "title": "Rest Day",
+        "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+        "date": "2025-05-06",
+        "duration": "0",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Long Endurance Ride",
+        "description": "Go for a long ride to build endurance. Focus on maintaining a steady pace.",
+        "date": "2025-05-07",
+        "duration": "180",
+        "distance_km": "80",
+        "elevation_gain": "500",
+        "average_speed": "27",
+        "average_heartrate": "135"
+      },
+      {
+        "title": "Strength Training",
+        "description": "Off-bike strength training focusing on core and leg strength.",
+        "date": "2025-05-08",
+        "duration": "60",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Hill Climb Simulation",
+        "description": "Simulate a long hill climb by finding a long steady climb and maintaining a steady pace. Focus on pacing and breathing.",
+        "date": "2025-05-09",
+        "duration": "90",
+        "distance_km": "40",
+        "elevation_gain": "1000",
+        "average_speed": "20",
+        "average_heartrate": "150"
+      },
+      {
+        "title": "Recovery Ride",
+        "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+        "date": "2025-05-10",
+        "duration": "45",
+        "distance_km": "20",
+        "elevation_gain": "100",
+        "average_speed": "18",
+        "average_heartrate": "115"
+      },
+      {
+        "title": "Threshold Intervals",
+        "description": "Perform intervals at your threshold pace to improve your lactate threshold. 5x5 minutes with 5 minutes rest between each.",
+        "date": "2025-05-11",
+        "duration": "60",
+        "distance_km": "30",
+        "elevation_gain": "300",
+        "average_speed": "30",
+        "average_heartrate": "160"
+      },
+      {
+        "title": "Rest Day",
+        "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+        "date": "2025-05-12",
+        "duration": "0",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Base Endurance Ride",
+        "description": "Ride at a steady pace for 90 minutes on flat terrain to build your aerobic base.",
+        "date": "2025-05-13",
+        "duration": "90",
+        "distance_km": "40",
+        "elevation_gain": "200",
+        "average_speed": "27",
+        "average_heartrate": "130"
+      },
+      {
+        "title": "Hill Repeats",
+        "description": "Find a hill and do 6 repeats, focusing on maintaining a steady pace. Rest for 5 minutes between each repeat.",
+        "date": "2025-05-14",
+        "duration": "70",
+        "distance_km": "35",
+        "elevation_gain": "900",
+        "average_speed": "20",
+        "average_heartrate": "150"
+      },
+      {
+        "title": "Recovery Ride",
+        "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+        "date": "2025-05-15",
+        "duration": "45",
+        "distance_km": "20",
+        "elevation_gain": "100",
+        "average_speed": "18",
+        "average_heartrate": "115"
+      },
+      {
+        "title": "Tempo Ride",
+        "description": "Ride at a tempo pace, slightly below race pace, for 70 minutes. Focus on maintaining a consistent speed and cadence.",
+        "date": "2025-05-16",
+        "duration": "70",
+        "distance_km": "40",
+        "elevation_gain": "400",
+        "average_speed": "35",
+        "average_heartrate": "145"
+      },
+      {
+        "title": "Rest Day",
+        "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+        "date": "2025-05-17",
+        "duration": "0",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Long Endurance Ride",
+        "description": "Go for a long ride to build endurance. Focus on maintaining a steady pace.",
+        "date": "2025-05-18",
+        "duration": "210",
+        "distance_km": "90",
+        "elevation_gain": "600",
+        "average_speed": "27",
+        "average_heartrate": "135"
+      },
+      {
+        "title": "Strength Training",
+        "description": "Off-bike strength training focusing on core and leg strength.",
+        "date": "2025-05-19",
+        "duration": "60",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Hill Climb Simulation",
+        "description": "Simulate a long hill climb by finding a long steady climb and maintaining a steady pace. Focus on pacing and breathing.",
+        "date": "2025-05-20",
+        "duration": "90",
+        "distance_km": "40",
+        "elevation_gain": "1000",
+        "average_speed": "20",
+        "average_heartrate": "150"
+      },
+      {
+        "title": "Recovery Ride",
+        "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+        "date": "2025-05-21",
+        "duration": "45",
+        "distance_km": "20",
+        "elevation_gain": "100",
+        "average_speed": "18",
+        "average_heartrate": "115"
+      },
+      {
+        "title": "Threshold Intervals",
+        "description": "Perform intervals at your threshold pace to improve your lactate threshold. 5x6 minutes with 5 minutes rest between each.",
+        "date": "2025-05-22",
+        "duration": "70",
+        "distance_km": "35",
+        "elevation_gain": "400",
+        "average_speed": "30",
+        "average_heartrate": "160"
+      },
+      {
+        "title": "Rest Day",
+        "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+        "date": "2025-05-23",
+        "duration": "0",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Base Endurance Ride",
+        "description": "Ride at a steady pace for 100 minutes on flat terrain to build your aerobic base.",
+        "date": "2025-05-24",
+        "duration": "100",
+        "distance_km": "45",
+        "elevation_gain": "250",
+        "average_speed": "27",
+        "average_heartrate": "130"
+      },
+      {
+        "title": "Hill Repeats",
+        "description": "Find a hill and do 7 repeats, focusing on maintaining a steady pace. Rest for 5 minutes between each repeat.",
+        "date": "2025-05-25",
+        "duration": "80",
+        "distance_km": "40",
+        "elevation_gain": "1000",
+        "average_speed": "20",
+        "average_heartrate": "150"
+      },
+      {
+        "title": "Recovery Ride",
+        "description": "A gentle ride to aid recovery. Keep the intensity low and enjoy the ride.",
+        "date": "2025-05-26",
+        "duration": "45",
+        "distance_km": "20",
+        "elevation_gain": "100",
+        "average_speed": "18",
+        "average_heartrate": "115"
+      },
+      {
+        "title": "Tempo Ride",
+        "description": "Ride at a tempo pace, slightly below race pace, for 80 minutes. Focus on maintaining a consistent speed and cadence.",
+        "date": "2025-05-27",
+        "duration": "80",
+        "distance_km": "45",
+        "elevation_gain": "500",
+        "average_speed": "35",
+        "average_heartrate": "145"
+      },
+      {
+        "title": "Rest Day",
+        "description": "Take a complete rest day to recover from previous rides and allow your body to adapt.",
+        "date": "2025-05-28",
+        "duration": "0",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      },
+      {
+        "title": "Long Endurance Ride",
+        "description": "Go for a long ride to build endurance. Focus on maintaining a steady pace.",
+        "date": "2025-05-29",
+        "duration": "240",
+        "distance_km": "100",
+        "elevation_gain": "700",
+        "average_speed": "25",
+        "average_heartrate": "135"
+      },
+      {
+        "title": "Strength Training",
+        "description": "Off-bike strength training focusing on core and leg strength.",
+        "date": "2025-05-30",
+        "duration": "60",
+        "distance_km": "0",
+        "elevation_gain": "0",
+        "average_speed": "0",
+        "average_heartrate": "0"
+      }
+    ],
+    "goal": "Prepare for a Himalayan race in August by building endurance, climbing ability, and overall fitness."
+  }
+}

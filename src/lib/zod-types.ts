@@ -21,7 +21,9 @@ export const FitnessOutput = z.object({
   day_wise: z
     .object({
       title: z.string().describe("title of the activity to be shown on Strava"),
-      description: z.string().describe("short concise description of the day"),
+      description: z
+        .string()
+        .describe("A detailed description of the workout planned for the day."),
       date: z.string().describe("date of the plan in format YYYY-MM-DD"),
       duration: z.string().describe("duration of the plan in minutes"),
       distance_km: z.string().describe("distance of the plan in kilometers"),
