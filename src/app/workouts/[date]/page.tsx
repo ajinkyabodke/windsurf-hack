@@ -1,8 +1,9 @@
 "use client";
 
-import type { FitnessOutput } from "@/lib/zod-types";
+import { dataAtom } from "@/lib/store";
 // import samplePlan from "@/lib/sample-plan.json";
 import { format } from "date-fns";
+import { useAtom } from "jotai";
 import { useParams } from "next/navigation";
 import { z } from "zod";
 
@@ -26,9 +27,11 @@ export default function WorkoutPage() {
   const params = useParams();
   const date = params.date as string;
 
-  const samplePlan = JSON.parse(
-    localStorage.getItem("training_plan") ?? "{}",
-  ) as FitnessOutput;
+  const [samplePlan] = useAtom(dataAtom);
+
+  // const samplePlan = JSON.parse(
+  //   localStorage.getItem("training_plan") ?? "{}",
+  // ) as FitnessOutput;
 
   // Find the workout for this date in sample-plan.json
   const workout = samplePlan.day_wise.find((w) => w.date === date);

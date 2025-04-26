@@ -1,13 +1,14 @@
 "use client";
 
 import { ConversationInterface } from "@/components/ConversationInterface";
+import { dataAtom } from "@/lib/store";
 // import samplePlan from "@/lib/sample-plan.json";
 import {
   type StravaActivity,
   type StravaProfile,
   type StravaStats,
 } from "@/lib/types";
-import type { FitnessOutput } from "@/lib/zod-types";
+import { useAtom } from "jotai";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -217,6 +218,8 @@ function ActivityCalendar({
   onMonthChange: (month: number) => void;
   onYearChange: (year: number) => void;
 }) {
+  const [samplePlan] = useAtom(dataAtom);
+
   // Group activities by date
   const activityMap = activities.reduce<Record<string, StravaActivity[]>>(
     (acc, activity) => {
@@ -229,9 +232,9 @@ function ActivityCalendar({
     {},
   );
 
-  const samplePlan = JSON.parse(
-    localStorage.getItem("training_plan") ?? "{}",
-  ) as FitnessOutput;
+  // const samplePlan = JSON.parse(
+  //   localStorage.getItem("training_plan") ?? "{}",
+  // ) as FitnessOutput;
 
   // Group planned workouts by date
   const plannedWorkoutMap = samplePlan.day_wise.reduce<

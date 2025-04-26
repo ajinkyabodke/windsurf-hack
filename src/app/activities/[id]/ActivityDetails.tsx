@@ -1,8 +1,9 @@
 "use client";
 
+import { dataAtom } from "@/lib/store";
 // import samplePlan from "@/lib/sample-plan.json";
 import { type Activity } from "@/lib/types";
-import type { FitnessOutput } from "@/lib/zod-types";
+import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 
 type WorkoutPlan = {
@@ -67,6 +68,8 @@ export function ActivityDetails({ id }: { id: string }) {
   );
   const [error, setError] = useState<string | null>(null);
 
+  const [samplePlan] = useAtom(dataAtom);
+
   useEffect(() => {
     try {
       // Load activity
@@ -88,9 +91,9 @@ export function ActivityDetails({ id }: { id: string }) {
 
       setActivity(foundActivity);
 
-      const samplePlan = JSON.parse(
-        localStorage.getItem("training_plan") ?? "{}",
-      ) as FitnessOutput;
+      // const samplePlan = JSON.parse(
+      //   localStorage.getItem("training_plan") ?? "{}",
+      // ) as FitnessOutput;
 
       // Find matching planned workout
       const activityDate = new Date(foundActivity.start_date);
