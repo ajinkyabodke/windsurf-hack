@@ -248,11 +248,35 @@ export default function DashboardPage() {
         .finally(() => {
           setIsLoading(false);
         });
-    } else if (storedConnected && !stravaData) {
-      // If we're already connected but don't have data, fetch it
-      void fetchStravaData();
+    } else if (storedConnected) {
+      // Check if we need to fetch fresh data
+      const shouldFetchFreshData = () => {
+        // If no existing state data, check localStorage
+        const cachedDataExists =
+          localStorage.getItem("strava_data_profile") !== null &&
+          localStorage.getItem("strava_data_stats") !== null;
+
+        if (!cachedDataExists) return true;
+
+        // Check if the last fetched time is available
+        const lastFetchedStr = localStorage.getItem("strava_data_lastFetched");
+        if (!lastFetchedStr) return true;
+
+        // Check if the data is older than 24 hours
+        const lastFetchTime = new Date(lastFetchedStr).getTime();
+        const currentTime = new Date().getTime();
+        const dataAge = currentTime - lastFetchTime;
+        const maxAge = 24 * 3600 * 1000; // 24 hours in milliseconds
+
+        return dataAge > maxAge;
+      };
+
+      // Only fetch if we need fresh data
+      if (shouldFetchFreshData()) {
+        void fetchStravaData();
+      }
     }
-  }, [searchParams, router, stravaData]);
+  }, [searchParams, router]);
 
   if (isLoading) {
     return (
