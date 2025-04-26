@@ -125,160 +125,181 @@ export function ActivityDetails({ id }: { id: string }) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="rounded-xl border-4 border-black bg-cyan-200 p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-        <div className="mb-8">
-          <h1 className="mb-2 text-4xl font-black">{activity.name}</h1>
-          <div className="flex flex-wrap gap-4">
-            <span className="inline-block rounded-lg border-2 border-black bg-white px-3 py-1 text-sm font-bold">
+      {/* Main Card */}
+      <div className="rounded-xl border-4 border-black bg-cyan-200 p-8">
+        {/* Header */}
+        <div className="mb-6">
+          <h1 className="mb-4 text-4xl font-black">{activity.name} ⛰️</h1>
+          <div className="flex flex-wrap gap-3">
+            <span className="inline-block rounded-lg bg-white px-3 py-1 text-sm font-bold">
               {new Date(activity.start_date_local).toLocaleString()}
             </span>
-            <span className="inline-block rounded-lg border-2 border-black bg-white px-3 py-1 text-sm font-bold">
+            <span className="inline-block rounded-lg bg-white px-3 py-1 text-sm font-bold">
               {activity.timezone}
             </span>
             {activity.kudos_count && activity.kudos_count > 0 && (
-              <span className="inline-block rounded-lg border-2 border-black bg-pink-200 px-3 py-1 text-sm font-bold">
+              <span className="inline-block rounded-lg bg-white px-3 py-1 text-sm font-bold">
                 ❤️ {activity.kudos_count} kudos
               </span>
             )}
           </div>
         </div>
 
+        {/* Planned Workout */}
         {plannedWorkout && (
-          <div className="mb-6 rounded-lg border-2 border-black bg-yellow-200 p-4">
-            <h2 className="mb-2 text-xl font-black">📅 Planned Workout</h2>
-            <p className="font-bold">{plannedWorkout.title}</p>
-            <p className="text-sm text-gray-700">
-              {plannedWorkout.description}
-            </p>
+          <div className="mb-8 rounded-xl border-2 border-black bg-yellow-200 p-6">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">📅</span>
+              <h2 className="text-xl font-black">Planned Workout</h2>
+            </div>
+            <p className="mt-2 font-bold">{plannedWorkout.title}</p>
+            <p className="mt-1 text-gray-700">{plannedWorkout.description}</p>
           </div>
         )}
 
+        {/* Stats Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-6">
-            <div className="rounded-lg border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h2 className="mb-4 text-2xl font-bold">Basic Stats</h2>
-              <ul className="space-y-2">
-                <li className="flex justify-between border-b border-gray-200 py-2">
-                  <span className="font-bold">Type:</span>
-                  <span>{activity.sport_type ?? activity.type}</span>
-                </li>
-                {plannedWorkout ? (
-                  <>
-                    <ComparisonStat
-                      label="Distance"
-                      actual={activity.distance / 1000}
-                      planned={Number(plannedWorkout.distance_km)}
-                      unit="km"
-                    />
-                    <ComparisonStat
-                      label="Duration"
-                      actual={activity.moving_time / 60}
-                      planned={Number(plannedWorkout.duration)}
-                      unit="min"
-                    />
-                    <ComparisonStat
-                      label="Elevation Gain"
-                      actual={activity.total_elevation_gain}
-                      planned={Number(plannedWorkout.elevation_gain)}
-                      unit="m"
-                    />
-                    <ComparisonStat
-                      label="Average Speed"
-                      actual={activity.average_speed * 3.6}
-                      planned={Number(plannedWorkout.average_speed)}
-                      unit="km/h"
-                    />
-                  </>
-                ) : (
-                  <>
-                    <li className="flex justify-between border-b border-gray-200 py-2">
-                      <span className="font-bold">Distance:</span>
-                      <span>{(activity.distance / 1000).toFixed(2)} km</span>
-                    </li>
-                    <li className="flex justify-between border-b border-gray-200 py-2">
-                      <span className="font-bold">Moving Time:</span>
-                      <span>{formatTime(activity.moving_time)}</span>
-                    </li>
-                    <li className="flex justify-between border-b border-gray-200 py-2">
-                      <span className="font-bold">Elevation Gain:</span>
-                      <span>{activity.total_elevation_gain.toFixed(0)} m</span>
-                    </li>
-                    <li className="flex justify-between border-b border-gray-200 py-2">
-                      <span className="font-bold">Average Speed:</span>
-                      <span>
-                        {(activity.average_speed * 3.6).toFixed(1)} km/h
-                      </span>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-
-            {activity.map?.summary_polyline && (
-              <div className="rounded-lg border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <h2 className="mb-4 text-2xl font-bold">Route Map</h2>
-                <div className="aspect-square w-full overflow-hidden rounded-lg border-2 border-black">
-                  <img
-                    src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/path-2+f00(${encodeURIComponent(activity.map.summary_polyline)})/auto/400x400@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`}
-                    alt="Activity route"
-                    className="h-full w-full object-cover"
+          {/* Basic Stats */}
+          <div className="rounded-xl border-2 border-black bg-white p-6">
+            <h2 className="mb-4 text-2xl font-black">Basic Stats</h2>
+            <ul className="space-y-4">
+              <li className="flex items-center justify-between">
+                <span className="font-bold">Type:</span>
+                <span className="text-right font-bold">
+                  {activity.sport_type ?? activity.type}
+                </span>
+              </li>
+              {plannedWorkout ? (
+                <>
+                  <ComparisonStat
+                    label="Distance"
+                    actual={activity.distance / 1000}
+                    planned={Number(plannedWorkout.distance_km)}
+                    unit="km"
                   />
-                </div>
-              </div>
-            )}
+                  <ComparisonStat
+                    label="Duration"
+                    actual={activity.moving_time / 60}
+                    planned={Number(plannedWorkout.duration)}
+                    unit="min"
+                  />
+                  <ComparisonStat
+                    label="Elevation Gain"
+                    actual={activity.total_elevation_gain}
+                    planned={Number(plannedWorkout.elevation_gain)}
+                    unit="m"
+                  />
+                  <ComparisonStat
+                    label="Average Speed"
+                    actual={activity.average_speed * 3.6}
+                    planned={Number(plannedWorkout.average_speed)}
+                    unit="km/h"
+                  />
+                </>
+              ) : (
+                <>
+                  <li className="flex items-center justify-between">
+                    <span className="font-bold">Distance:</span>
+                    <span className="text-right font-bold">
+                      {(activity.distance / 1000).toFixed(1)} km
+                    </span>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span className="font-bold">Duration:</span>
+                    <span className="text-right font-bold">
+                      {formatTime(activity.moving_time)}
+                    </span>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span className="font-bold">Elevation Gain:</span>
+                    <span className="text-right font-bold">
+                      {activity.total_elevation_gain.toFixed(0)} m
+                    </span>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span className="font-bold">Average Speed:</span>
+                    <span className="text-right font-bold">
+                      {(activity.average_speed * 3.6).toFixed(1)} km/h
+                    </span>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
 
-          <div className="space-y-6">
-            <div className="rounded-lg border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h2 className="mb-4 text-2xl font-bold">Additional Stats</h2>
-              <ul className="space-y-2">
-                <li className="flex justify-between border-b border-gray-200 py-2">
-                  <span className="font-bold">Elapsed Time:</span>
-                  <span>{formatTime(activity.elapsed_time)}</span>
+          {/* Power Data */}
+          {activity.device_watts && (
+            <div className="rounded-xl border-2 border-black bg-white p-6">
+              <h2 className="mb-4 text-2xl font-black">Power Data</h2>
+              <ul className="space-y-4">
+                <li className="flex items-center justify-between">
+                  <span className="font-bold">Average Power:</span>
+                  <span className="text-right font-bold">
+                    {activity.average_watts?.toFixed(0)} W
+                  </span>
                 </li>
-                <li className="flex justify-between border-b border-gray-200 py-2">
-                  <span className="font-bold">Max Speed:</span>
-                  <span>{(activity.max_speed * 3.6).toFixed(1)} km/h</span>
+                <li className="flex items-center justify-between">
+                  <span className="font-bold">Max Power:</span>
+                  <span className="text-right font-bold">
+                    {activity.max_watts} W
+                  </span>
                 </li>
-                {activity.average_cadence && (
-                  <li className="flex justify-between border-b border-gray-200 py-2">
-                    <span className="font-bold">Average Cadence:</span>
-                    <span>{activity.average_cadence} rpm</span>
-                  </li>
-                )}
-                {activity.calories && (
-                  <li className="flex justify-between border-b border-gray-200 py-2">
-                    <span className="font-bold">Calories:</span>
-                    <span>{activity.calories} kcal</span>
-                  </li>
-                )}
+                <li className="flex items-center justify-between">
+                  <span className="font-bold">Weighted Avg Power:</span>
+                  <span className="text-right font-bold">
+                    {activity.weighted_average_watts} W
+                  </span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span className="font-bold">Work:</span>
+                  <span className="text-right font-bold">
+                    {activity.kilojoules?.toFixed(0)} kJ
+                  </span>
+                </li>
               </ul>
             </div>
+          )}
 
-            {activity.device_watts && (
-              <div className="rounded-lg border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <h2 className="mb-4 text-2xl font-bold">Power Data</h2>
-                <ul className="space-y-2">
-                  <li className="flex justify-between border-b border-gray-200 py-2">
-                    <span className="font-bold">Average Power:</span>
-                    <span>{activity.average_watts?.toFixed(0)} W</span>
-                  </li>
-                  <li className="flex justify-between border-b border-gray-200 py-2">
-                    <span className="font-bold">Max Power:</span>
-                    <span>{activity.max_watts} W</span>
-                  </li>
-                  <li className="flex justify-between border-b border-gray-200 py-2">
-                    <span className="font-bold">Weighted Avg Power:</span>
-                    <span>{activity.weighted_average_watts} W</span>
-                  </li>
-                  <li className="flex justify-between border-b border-gray-200 py-2">
-                    <span className="font-bold">Work:</span>
-                    <span>{activity.kilojoules?.toFixed(0)} kJ</span>
-                  </li>
-                </ul>
-              </div>
-            )}
+          {/* Additional Stats */}
+          <div className="rounded-xl border-2 border-black bg-white p-6">
+            <h2 className="mb-4 text-2xl font-black">Additional Stats</h2>
+            <ul className="space-y-4">
+              <li className="flex items-center justify-between">
+                <span className="font-bold">Elapsed Time:</span>
+                <span className="text-right font-bold">
+                  {formatTime(activity.elapsed_time)}
+                </span>
+              </li>
+              <li className="flex items-center justify-between">
+                <span className="font-bold">Max Speed:</span>
+                <span className="text-right font-bold">
+                  {(activity.max_speed * 3.6).toFixed(1)} km/h
+                </span>
+              </li>
+              {activity.average_cadence && (
+                <li className="flex items-center justify-between">
+                  <span className="font-bold">Average Cadence:</span>
+                  <span className="text-right font-bold">
+                    {Math.round(activity.average_cadence)} rpm
+                  </span>
+                </li>
+              )}
+            </ul>
           </div>
+
+          {/* Map */}
+          {activity.map?.summary_polyline && (
+            <div className="rounded-xl border-2 border-black bg-white p-6">
+              <h2 className="mb-4 text-2xl font-black">Route Map</h2>
+              <div className="aspect-square w-full overflow-hidden rounded-lg">
+                <img
+                  src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/path-2+f00(${encodeURIComponent(activity.map.summary_polyline)})/auto/400x400@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`}
+                  alt="Activity route"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
