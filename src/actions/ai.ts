@@ -13,6 +13,9 @@ export const analyzeConversation = async (input: FitnessInput) => {
     temperature: 0.7,
     system: `You are a helpful AI assistant that can answer questions and help with making a cycling training plan. Infer the goal of the user from the transcript if not provided. Mark the rest days with 0 values. Today is 1st May 2025. Call either the createPlan or updatePlan tool based on the user's request. Call Only one tool at a time, not both.`,
     // maxSteps: 1,
+
+    toolChoice: "required",
+
     tools: {
       createPlan: tool({
         parameters: FitnessOutput,
@@ -21,13 +24,13 @@ export const analyzeConversation = async (input: FitnessInput) => {
           return newPlan;
         },
       }),
-      updatePlan: tool({
-        parameters: FitnessOutput,
-        execute: async (updatedPlan) => {
-          console.log(`[UPDATE PLAN]: ${JSON.stringify(updatedPlan)}`);
-          return updatedPlan;
-        },
-      }),
+      // updatePlan: tool({
+      //   parameters: FitnessOutput,
+      //   execute: async (updatedPlan) => {
+      //     console.log(`[UPDATE PLAN]: ${JSON.stringify(updatedPlan)}`);
+      //     return updatedPlan;
+      //   },
+      // }),
     },
 
     messages: [
