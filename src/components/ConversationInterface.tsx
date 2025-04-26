@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { USER_PROFILE } from "@/lib/constants";
 import { dataAtom } from "@/lib/store";
 import { athleteActivitySchema } from "@/lib/types";
-import type { FitnessOutput } from "@/lib/zod-types";
 import { useConversation } from "@11labs/react";
 import { useAtom } from "jotai";
 import { LucideX } from "lucide-react";
@@ -34,7 +33,7 @@ export function ConversationInterface() {
     messages: [],
   });
 
-  const [data, setData] = useAtom(dataAtom);
+  const [existingDataJson, setData] = useAtom(dataAtom);
 
   const user = USER_PROFILE;
   const name = user.name;
@@ -60,18 +59,13 @@ export function ConversationInterface() {
           .join("\n"),
       });
 
-      const existingData = localStorage.getItem("training_plan");
-      const existingDataJson = JSON.parse(
-        existingData ?? "{}",
-      ) as FitnessOutput;
-
       const updatedDayWise = [
         ...existingDataJson.day_wise,
         ...result.result.day_wise,
       ];
 
       const updatedData = {
-        ...(JSON.parse(existingData ?? "{}") as FitnessOutput),
+        ...existingDataJson,
         ...result.result,
         day_wise: updatedDayWise,
       };
