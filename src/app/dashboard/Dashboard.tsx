@@ -16,12 +16,16 @@ type DashboardProps = {
   };
   athleteId?: number;
   stravaFetchedAt?: Date;
+  onRefresh?: () => void;
+  isRefreshing?: boolean;
 };
 
 export function Dashboard({
   stravaData,
   athleteId,
   stravaFetchedAt,
+  onRefresh,
+  isRefreshing,
 }: DashboardProps) {
   const [showAllActivities, setShowAllActivities] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(() =>
@@ -44,48 +48,56 @@ export function Dashboard({
     <div className="container mx-auto px-4 py-8 font-mono">
       {stravaData?.profile && (
         <div className="mb-8 rounded-xl border-4 border-black bg-yellow-300 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <div className="flex items-center gap-6">
-            {stravaData.profile.profile && (
-              <div className="relative h-28 w-28 overflow-hidden rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <img
-                  src={stravaData.profile.profile}
-                  alt="Profile"
-                  className="h-full w-full object-cover"
-                />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              {stravaData.profile.profile && (
+                <div className="relative h-24 w-24 overflow-hidden rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <img
+                    src={stravaData.profile.profile}
+                    alt="Profile"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              <div>
+                <h1 className="text-4xl font-black">
+                  {stravaData.profile.firstname} {stravaData.profile.lastname}
+                </h1>
+                {stravaFetchedAt && (
+                  <p className="mt-2 inline-block rotate-[358deg] border-2 border-black bg-cyan-300 px-3 py-1 text-lg font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                    Last updated: {formattedTime}
+                  </p>
+                )}
               </div>
-            )}
-            <div>
-              <h2 className="text-3xl font-black">
-                {stravaData.profile.firstname} {stravaData.profile.lastname}
-              </h2>
-              {stravaData.profile.city && stravaData.profile.country && (
-                <p className="text-xl font-bold">
-                  {stravaData.profile.city}, {stravaData.profile.country}
-                </p>
-              )}
-              {stravaData.profile.username && (
-                <p className="mt-1 inline-block rounded-lg bg-black px-2 py-1 text-lg font-bold text-yellow-300">
-                  @{stravaData.profile.username}
-                </p>
-              )}
             </div>
+            <button
+              onClick={onRefresh}
+              disabled={isRefreshing}
+              className="rounded-xl border-4 border-black bg-blue-500 px-6 py-3 text-xl font-black text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-1 hover:bg-blue-600 hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isRefreshing ? "Refreshing..." : "Refresh Data"}
+            </button>
           </div>
         </div>
       )}
 
-      <div className="mb-8">
-        <h2 className="mb-2 text-4xl font-black tracking-tight uppercase">
-          Your Strava Stats
-        </h2>
-        {stravaFetchedAt && (
-          <p className="inline-block rotate-[358deg] border-2 border-black bg-cyan-300 px-3 py-1 text-lg font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-            Last updated: {formattedTime}
-          </p>
-        )}
-      </div>
-
       {stravaData ? (
         <div>
+          {stravaData.activities && stravaData.activities.length > 0 && (
+            <div className="mb-12">
+              <h3 className="mb-6 inline-block -rotate-1 transform bg-black px-4 py-2 text-2xl font-black text-white uppercase shadow-[5px_5px_0px_0px_rgba(251,191,36,1)]">
+                Activities Calendar
+              </h3>
+              <ActivityCalendar
+                activities={stravaData.activities}
+                selectedMonth={selectedMonth}
+                selectedYear={selectedYear}
+                onMonthChange={setSelectedMonth}
+                onYearChange={setSelectedYear}
+              />
+            </div>
+          )}
+
           {stravaData.activities && stravaData.activities.length > 0 && (
             <div className="mb-12">
               <h3 className="mb-6 inline-block -rotate-1 transform bg-black px-4 py-2 text-2xl font-black text-white uppercase shadow-[5px_5px_0px_0px_rgba(251,191,36,1)]">
@@ -148,21 +160,6 @@ export function Dashboard({
                   </button>
                 </div>
               )}
-            </div>
-          )}
-
-          {stravaData.activities && stravaData.activities.length > 0 && (
-            <div className="mb-12">
-              <h3 className="mb-6 inline-block rotate-1 transform bg-black px-4 py-2 text-2xl font-black text-white uppercase shadow-[5px_5px_0px_0px_rgba(52,211,153,1)]">
-                Activity Calendar
-              </h3>
-              <ActivityCalendar
-                activities={stravaData.activities}
-                selectedMonth={selectedMonth}
-                selectedYear={selectedYear}
-                onMonthChange={setSelectedMonth}
-                onYearChange={setSelectedYear}
-              />
             </div>
           )}
 

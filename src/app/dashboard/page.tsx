@@ -305,24 +305,13 @@ export default function DashboardPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Your Dashboard</h1>
-        {stravaConnected && (
-          <button
-            onClick={() => void fetchStravaData()}
-            disabled={isFetchingData}
-            className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-          >
-            {isFetchingData ? "Refreshing..." : "Refresh Data"}
-          </button>
-        )}
-      </div>
-
       {stravaConnected ? (
         <Dashboard
           stravaData={stravaData}
           athleteId={athleteId}
           stravaFetchedAt={lastFetched}
+          onRefresh={() => void fetchStravaData()}
+          isRefreshing={isFetchingData}
         />
       ) : (
         <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">
