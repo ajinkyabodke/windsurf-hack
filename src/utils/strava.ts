@@ -1,5 +1,7 @@
 import { env } from "@/env";
 
+const USE_MOCK = true;
+
 export type StravaActivity = {
   id: number;
   name: string;
@@ -134,7 +136,7 @@ export async function getStravaAthleteProfile(
 ): Promise<StravaProfile> {
   return fetchStravaData<StravaProfile>(
     accessToken,
-    `/api/strava/profile?token=${accessToken}`,
+    `/api/strava${USE_MOCK ? "_mock" : ""}/profile?token=${accessToken}`,
   );
 }
 
@@ -144,7 +146,7 @@ export async function getStravaAthleteStats(
 ): Promise<StravaStats> {
   return fetchStravaData<StravaStats>(
     accessToken,
-    `/api/strava/stats?token=${accessToken}&athlete_id=${athleteId}`,
+    `/api/strava${USE_MOCK ? "_mock" : ""}/stats?token=${accessToken}&athlete_id=${athleteId}`,
   );
 }
 
@@ -155,7 +157,7 @@ export async function getStravaActivities(
 ): Promise<StravaActivity[]> {
   return fetchStravaData<StravaActivity[]>(
     accessToken,
-    `/api/strava/activities?token=${accessToken}&page=${page}&per_page=${perPage}`,
+    `/api/strava${USE_MOCK ? "_mock" : ""}/activities?token=${accessToken}&page=${page}&per_page=${perPage}`,
   );
 }
 
