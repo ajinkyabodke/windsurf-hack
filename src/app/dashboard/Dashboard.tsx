@@ -47,7 +47,7 @@ export function Dashboard({
   return (
     <div className="container mx-auto px-4 py-8 font-mono">
       {stravaData?.profile && (
-        <div className="mb-8 rounded-xl border-4 border-black bg-yellow-300 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="mb-8 rounded-xl border-4 border-black bg-emerald-200 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               {stravaData.profile.profile && (
