@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { env } from "@/env";
 import { useEffect, useState } from "react";
 
@@ -25,35 +24,27 @@ export function StravaConnectButton() {
 
   if (isConnected) {
     return (
-      <Button
+      <button
         onClick={() => (window.location.href = "/dashboard")}
-        className="flex items-center rounded bg-green-600 px-4 py-2 font-bold text-white hover:bg-green-700"
+        className="flex items-center gap-2 rounded-lg bg-[#FC4C02] px-6 py-3 font-black text-white transition-all hover:bg-[#E34402]"
       >
-        <img
-          src="/strava-logo.svg"
-          alt="Strava logo"
-          width={24}
-          height={24}
-          className="mr-2"
-        />
+        <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
+          <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169" />
+        </svg>
         View Dashboard
-      </Button>
+      </button>
     );
   }
 
   return (
-    <Button
+    <button
       onClick={handleConnect}
-      className="flex items-center rounded bg-[#FC4C02] px-4 py-2 font-bold text-white hover:bg-[#FC4C02]/90"
+      className="flex items-center gap-2 rounded-lg bg-[#FC4C02] px-6 py-3 font-black text-white transition-all hover:bg-[#E34402]"
     >
-      <img
-        src="/strava-logo.svg"
-        alt="Strava logo"
-        width={24}
-        height={24}
-        className="mr-2"
-      />
+      <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169" />
+      </svg>
       Connect with Strava
-    </Button>
+    </button>
   );
 }
