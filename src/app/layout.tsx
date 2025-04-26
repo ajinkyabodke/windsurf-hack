@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 
 import { NavBar } from "@/components/navbar";
 import { TRPCReactProvider } from "@/trpc/react";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "PsyCoach - Your AI Coach",
@@ -29,6 +30,8 @@ export default function RootLayout({
           <footer className="py-6 text-center text-sm text-gray-500">
             © {new Date().getFullYear()} PsyCoach. All rights reserved.
           </footer>
+
+          <Toaster />
         </TRPCReactProvider>
       </body>
     </html>

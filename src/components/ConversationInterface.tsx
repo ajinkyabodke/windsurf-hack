@@ -43,6 +43,9 @@ export function ConversationInterface() {
       console.log("Connected to ElevenLabs");
     },
     onDisconnect: async (props: unknown) => {
+      toast.loading("Generating Plan 🚴‍♂️", {
+        id: "generating-plan",
+      });
       console.log("Disconnected from ElevenLabs", props);
 
       const userActivities = localStorage.getItem(
@@ -70,9 +73,13 @@ export function ConversationInterface() {
         day_wise: updatedDayWise,
       };
 
+      setData(updatedData);
+
       localStorage.setItem("training_plan", JSON.stringify(updatedData));
 
-      setData(result.result);
+      toast.success("Plan Generated 🚴‍♂️", {
+        id: "generating-plan",
+      });
     },
     onMessage: async (message: Message) => {
       console.log("Received message:", message);
