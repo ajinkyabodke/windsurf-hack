@@ -20,7 +20,7 @@ export function NavBar() {
     <header className="border-b border-gray-200 bg-white">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link href="/" className="text-xl font-bold text-gray-800">
-          WindSurf
+          PsyCoach
         </Link>
 
         <nav className="flex items-center gap-6">

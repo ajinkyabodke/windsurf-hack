@@ -7,7 +7,7 @@ import { NavBar } from "@/components/navbar";
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
-  title: "WindSurf - Connect with Strava",
+  title: "PsyCoach - Your AI Coach",
   description: "Connect your Strava account to see your activities and stats.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
@@ -27,7 +27,7 @@ export default function RootLayout({
           <NavBar />
           {children}
           <footer className="py-6 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} WindSurf. All rights reserved.
+            © {new Date().getFullYear()} PsyCoach. All rights reserved.
           </footer>
         </TRPCReactProvider>
       </body>
