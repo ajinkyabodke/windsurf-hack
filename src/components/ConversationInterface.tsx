@@ -50,7 +50,7 @@ export function ConversationInterface() {
       );
       const activities = athleteActivitySchema
         .array()
-        .parse(userActivities ?? []);
+        .parse(JSON.parse(userActivities ?? "[]"));
 
       const result = await analyzeConversation({
         activities,
@@ -92,7 +92,12 @@ export function ConversationInterface() {
     const userActivities = localStorage.getItem(
       "strava_data_recent_activities",
     );
-    const activities = athleteActivitySchema.parse(userActivities);
+
+    console.log(userActivities);
+
+    const activities = athleteActivitySchema
+      .array()
+      .parse(JSON.parse(userActivities ?? "[]"));
 
     const basePrompt = `You are PsyCoach, an AI voice assistant specializing in holistic cycling training with emphasis on both physical and psychological aspects of performance. Your purpose is to gather relevant information about the user's cycling goals, physical state, and mental condition to inform training plan creation or updates (which will happen outside of your conversation).
 Core Interaction Flow
