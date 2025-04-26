@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@11labs/react": "^0.1.3",
+    "@ai-sdk/openai": "^1.3.20",
     "@radix-ui/react-dialog": "^1.1.11",
     "@radix-ui/react-scroll-area": "^1.2.6",
     "@radix-ui/react-slot": "^1.2.0",
@@ -29,6 +30,7 @@
     "@trpc/client": "^11.0.0",
     "@trpc/react-query": "^11.0.0",
     "@trpc/server": "^11.0.0",
+    "ai": "^4.3.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.41.0",

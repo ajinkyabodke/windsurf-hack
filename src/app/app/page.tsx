@@ -9,36 +9,6 @@ import { motion } from "motion/react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
-type Mood = {
-  id: string;
-  label: string;
-  description: string;
-  prompt: string;
-};
-
-type MoodValue = (typeof MOODS)[number]["id"];
-
-const MOODS: Mood[] = [
-  {
-    id: "vent",
-    label: "I need to vent",
-    description: "Let it all out",
-    prompt: "I am here to listen. Tell me what is bothering you...",
-  },
-  {
-    id: "chat",
-    label: "Just chat",
-    description: "Have a casual conversation",
-    prompt: "How was your day? I would love to hear about it...",
-  },
-  {
-    id: "unwind",
-    label: "Help me unwind",
-    description: "Relax and reflect",
-    prompt: "Let us take a moment to relax. How are you feeling right now?",
-  },
-];
-
 interface Message {
   source: "user" | "ai";
   message: string;
@@ -107,7 +77,14 @@ export default function Home() {
   });
 
   const getSystemPrompt = () => {
-    const basePrompt = `Keep the conversation light-hearted and casual while remaining emotionally aware. Engage with the user in a friendly manner, sharing brief, relevant observations that encourage connection. Maintain a natural flow in the conversation without being overly formal or scripted. Ask open-ended questions to guide the dialogue and ensure the user feels heard and valued.    `;
+    const basePrompt = `
+You are a helpful cycling coach that helps the user maintain a consistent training habit. You can create a training plan for the user based on their goals and preferences. You can also change the training plan based on the user's feedback or needs. Ensure that the user is always motivated to continue their cycling training, regardless of any setbacks or challenges. The goal is to help the user build a consistent training habit and improve their health.
+
+Keep the conversation light-hearted and casual while remaining emotionally aware.
+Engage with the user in a friendly manner, sharing brief, relevant observations that encourage connection. Keep your responses short.
+Maintain a natural flow in the conversation without being overly formal or scripted.
+Ask open-ended questions to guide the dialogue and ensure the user feels heard and valued.
+`;
 
     return `${basePrompt}`;
   };
@@ -132,7 +109,7 @@ export default function Home() {
       try {
         await navigator.mediaDevices.getUserMedia({ audio: true });
         await conversation?.startSession({
-          agentId: "AupMfEyUGwuMVyOywI6b",
+          agentId: "Srh68bkdtCCm0pE3byB1",
           overrides: {
             agent: {
               firstMessage: getFirstMessage(),
