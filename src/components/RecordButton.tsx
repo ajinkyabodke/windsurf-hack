@@ -110,7 +110,7 @@ export function RecordButton({
   }, [isRecording]);
 
   return (
-    <div className="relative flex h-16 items-center justify-center py-20">
+    <div className="relative flex h-16 items-center justify-center">
       <div
         className={cn(
           "flex items-center justify-center transition-transform duration-300 ease-in-out",
