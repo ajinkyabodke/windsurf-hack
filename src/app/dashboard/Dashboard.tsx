@@ -1,5 +1,6 @@
 "use client";
 
+import samplePlan from "@/lib/sample-plan.json";
 import {
   type StravaActivity,
   type StravaProfile,
@@ -188,6 +189,17 @@ export function Dashboard({
   );
 }
 
+type WorkoutPlan = {
+  title: string;
+  description: string;
+  date: string;
+  duration: string;
+  distance_km: string;
+  elevation_gain: string;
+  average_speed: string;
+  average_heartrate: string;
+};
+
 function ActivityCalendar({
   activities,
   selectedMonth,
@@ -206,14 +218,22 @@ function ActivityCalendar({
     (acc, activity) => {
       const date = new Date(activity.start_date);
       const dateKey = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-
       acc[dateKey] ??= [];
-
       acc[dateKey].push(activity);
       return acc;
     },
     {},
   );
+
+  // Group planned workouts by date
+  const plannedWorkoutMap = samplePlan.day_wise.reduce<
+    Record<string, WorkoutPlan>
+  >((acc, workout) => {
+    const date = new Date(workout.date);
+    const dateKey = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    acc[dateKey] = workout;
+    return acc;
+  }, {});
 
   // Generate calendar month view
   const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
@@ -264,7 +284,7 @@ function ActivityCalendar({
     calendarCells.push(
       <div
         key={`empty-${i}`}
-        className="h-28 border-2 border-black bg-gray-200 p-1"
+        className="h-32 border-2 border-black bg-gray-200 p-1"
       ></div>,
     );
   }
@@ -273,7 +293,9 @@ function ActivityCalendar({
   for (let day = 1; day <= daysInMonth; day++) {
     const dateKey = `${selectedYear}-${selectedMonth}-${day}`;
     const activitiesOnDay = activityMap[dateKey] ?? [];
+    const plannedWorkout = plannedWorkoutMap[dateKey];
     const hasActivities = activitiesOnDay.length > 0;
+    const hasPlannedWorkout = !!plannedWorkout;
 
     const isToday =
       new Date().getDate() === day &&
@@ -283,7 +305,7 @@ function ActivityCalendar({
     calendarCells.push(
       <div
         key={`day-${day}`}
-        className={`h-28 border-2 border-black p-2 ${
+        className={`h-40 border-2 border-black p-2 ${
           isToday
             ? "bg-green-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             : hasActivities
@@ -293,40 +315,50 @@ function ActivityCalendar({
       >
         <div className="flex justify-between">
           <span
-            className={`text-lg font-black ${isToday ? "rounded-full bg-black px-2 text-white" : ""}`}
+            className={`text-base font-black ${isToday ? "rounded-full bg-black px-2 text-white" : ""}`}
           >
             {day}
           </span>
           {hasActivities && (
-            <span className="rotate-3 transform rounded-full bg-black px-2 text-sm font-bold text-white">
+            <span className="rotate-3 transform rounded-full bg-black px-1.5 text-xs font-bold text-white">
               {activitiesOnDay.length}
             </span>
           )}
         </div>
 
-        <div className="mt-1 max-h-16 overflow-y-auto">
-          {activitiesOnDay.slice(0, 2).map((activity) => (
+        <div className="mt-1 max-h-32 space-y-1.5 overflow-y-auto">
+          {hasPlannedWorkout && plannedWorkout.title !== "Rest Day" && (
+            <Link
+              href={`/workouts/${selectedYear}-${(selectedMonth + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`}
+              className="block"
+            >
+              <div className="rounded-md border-2 border-black bg-yellow-200 p-1.5 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex items-center gap-0.5 font-bold">
+                  <span className="text-sm">📅</span> {plannedWorkout.title}
+                </div>
+                <div className="mt-0.5 font-bold text-gray-700">
+                  {plannedWorkout.distance_km}km • {plannedWorkout.duration}min
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {activitiesOnDay.map((activity) => (
             <Link
               key={activity.id}
               href={`/activities/${activity.id}`}
               className="block"
             >
-              <div className="mb-1 rounded-md border-2 border-black bg-white p-1 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
-                <div className="truncate font-bold">{activity.name}</div>
-                <div className="font-bold text-blue-600">
+              <div className="rounded-md border-2 border-black bg-white p-1.5 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex items-center gap-0.5 font-bold">
+                  <span className="text-sm">✅</span> {activity.name}
+                </div>
+                <div className="mt-0.5 font-bold text-blue-600">
                   {(activity.distance / 1000).toFixed(1)} km
                 </div>
               </div>
             </Link>
           ))}
-          {activitiesOnDay.length > 2 && (
-            <Link
-              href={`/dashboard?date=${selectedYear}-${selectedMonth + 1}-${day}`}
-              className="inline-block -rotate-2 transform bg-black px-1 py-0.5 text-xs font-bold text-white transition-all hover:rotate-0"
-            >
-              +{activitiesOnDay.length - 2} more
-            </Link>
-          )}
         </div>
       </div>,
     );
@@ -334,31 +366,41 @@ function ActivityCalendar({
 
   return (
     <div className="rounded-xl border-4 border-black bg-emerald-200 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-      <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-2xl font-black">
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="text-xl font-black">
           {monthNames[selectedMonth]} {selectedYear}
         </h3>
-        <div className="flex space-x-3">
-          <button
-            onClick={goToPreviousMonth}
-            className="rounded-md border-2 border-black bg-black px-3 py-1 font-bold text-white shadow-[3px_3px_0px_0px_rgba(110,231,183,1)] transition-all hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(110,231,183,1)]"
-          >
-            &larr;
-          </button>
-          <button
-            onClick={goToNextMonth}
-            className="rounded-md border-2 border-black bg-black px-3 py-1 font-bold text-white shadow-[3px_3px_0px_0px_rgba(110,231,183,1)] transition-all hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(110,231,183,1)]"
-          >
-            &rarr;
-          </button>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-2.5 rounded-sm border-2 border-black bg-yellow-200"></span>
+            <span className="text-xs font-bold">Planned</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-2.5 rounded-sm border-2 border-black bg-white"></span>
+            <span className="text-xs font-bold">Completed</span>
+          </div>
+          <div className="flex space-x-2">
+            <button
+              onClick={goToPreviousMonth}
+              className="rounded-md border-2 border-black bg-black px-2 py-0.5 font-bold text-white shadow-[3px_3px_0px_0px_rgba(110,231,183,1)] transition-all hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(110,231,183,1)]"
+            >
+              &larr;
+            </button>
+            <button
+              onClick={goToNextMonth}
+              className="rounded-md border-2 border-black bg-black px-2 py-0.5 font-bold text-white shadow-[3px_3px_0px_0px_rgba(110,231,183,1)] transition-all hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(110,231,183,1)]"
+            >
+              &rarr;
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1.5">
         {weekDays.map((day) => (
           <div
             key={day}
-            className="rotate-[-1deg] transform rounded-md border-2 border-black bg-emerald-400 p-2 text-center font-black"
+            className="rotate-[-1deg] transform rounded-md border-2 border-black bg-emerald-400 p-1.5 text-center text-sm font-black"
           >
             {day}
           </div>
