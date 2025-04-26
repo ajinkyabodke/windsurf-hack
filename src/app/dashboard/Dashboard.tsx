@@ -1,6 +1,5 @@
 "use client";
 
-import { ConversationInterface } from "@/components/ConversationInterface";
 import samplePlan from "@/lib/sample-plan.json";
 import {
   type StravaActivity,
@@ -48,8 +47,6 @@ export function Dashboard({
 
   return (
     <div className="container mx-auto px-4 py-8 font-mono">
-      <ConversationInterface />
-
       {stravaData?.profile && (
         <div className="mb-8 rounded-xl border-4 border-black bg-emerald-200 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-between">
@@ -308,7 +305,7 @@ function ActivityCalendar({
     calendarCells.push(
       <div
         key={`day-${day}`}
-        className={`h-40 border-2 border-black p-2 ${
+        className={`h-48 border-2 border-black p-2 ${
           isToday
             ? "bg-green-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             : hasActivities
@@ -329,15 +326,16 @@ function ActivityCalendar({
           )}
         </div>
 
-        <div className="mt-1 max-h-32 space-y-1.5 overflow-y-auto">
+        <div className="mt-1 max-h-40 space-y-1.5 overflow-y-auto">
           {hasPlannedWorkout && plannedWorkout.title !== "Rest Day" && (
             <Link
               href={`/workouts/${selectedYear}-${(selectedMonth + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`}
               className="block"
             >
-              <div className="rounded-md border-2 border-black bg-yellow-200 p-1.5 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+              <div className="rounded-md border-2 border-black bg-yellow-200 p-1.5 text-[11px] leading-tight shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex items-center gap-0.5 font-bold">
-                  <span className="text-sm">📅</span> {plannedWorkout.title}
+                  <span className="text-sm">📅</span>
+                  <span className="truncate">{plannedWorkout.title}</span>
                 </div>
                 <div className="mt-0.5 font-bold text-gray-700">
                   {plannedWorkout.distance_km}km • {plannedWorkout.duration}min
@@ -352,9 +350,10 @@ function ActivityCalendar({
               href={`/activities/${activity.id}`}
               className="block"
             >
-              <div className="rounded-md border-2 border-black bg-white p-1.5 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+              <div className="rounded-md border-2 border-black bg-white p-1.5 text-[11px] leading-tight shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
                 <div className="flex items-center gap-0.5 font-bold">
-                  <span className="text-sm">✅</span> {activity.name}
+                  <span className="text-sm">✅</span>
+                  <span className="truncate">{activity.name}</span>
                 </div>
                 <div className="mt-0.5 font-bold text-blue-600">
                   {(activity.distance / 1000).toFixed(1)} km

@@ -1,50 +1,31 @@
 {
-  "plan": "This plan is designed to gradually build your endurance and climbing ability to prepare you for the challenging Himalayan terrain. The focus will be on increasing ride duration and elevation gain, incorporating rest days for recovery, and gradually intensifying the workouts as the month progresses.",
+  "plan": "This plan is designed to progressively build your endurance, strength, and climbing ability in preparation for the Himalayan race in August. The focus is on gradually increasing the intensity and duration of rides, incorporating rest days, and including elevation training to simulate the race conditions.",
   "day_wise": [
     {
-      "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-04-22",
-      "duration": "0",
-      "distance_km": "0",
-      "elevation_gain": "0",
-      "average_speed": "0",
-      "average_heartrate": "0"
+      "title": "First Day",
+      "description": "First day of the training for warmup",
+      "date": "2025-04-01",
+      "duration": "30",
+      "distance_km": "10",
+      "elevation_gain": "100",
+      "average_speed": "20",
+      "average_heartrate": "140"
     },
+
     {
       "title": "Endurance Ride",
-      "description": "Long steady ride to build endurance.",
-      "date": "2025-04-24",
+      "description": "Long ride to build endurance. Keep a steady pace.",
+      "date": "2025-04-02",
       "duration": "180",
       "distance_km": "80",
       "elevation_gain": "500",
-      "average_speed": "27",
+      "average_speed": "26.7",
       "average_heartrate": "140"
     },
     {
-      "title": "Hill Repeats",
-      "description": "Intense hill repeats to build climbing strength.",
-      "date": "2025-04-28",
-      "duration": "60",
-      "distance_km": "20",
-      "elevation_gain": "400",
-      "average_speed": "20",
-      "average_heartrate": "150"
-    },
-    {
-      "title": "Recovery Ride",
-      "description": "Easy ride to aid recovery.",
-      "date": "2025-04-29",
-      "duration": "45",
-      "distance_km": "20",
-      "elevation_gain": "100",
-      "average_speed": "15",
-      "average_heartrate": "120"
-    },
-    {
-      "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-04-30",
+      "title": "Recovery Day",
+      "description": "Rest day to recover and rebuild muscles.",
+      "date": "2025-04-03",
       "duration": "0",
       "distance_km": "0",
       "elevation_gain": "0",
@@ -52,139 +33,19 @@
       "average_heartrate": "0"
     },
     {
-      "title": "Endurance Ride",
-      "description": "Long steady ride to build endurance.",
-      "date": "2025-05-01",
-      "duration": "200",
-      "distance_km": "90",
-      "elevation_gain": "600",
-      "average_speed": "27",
-      "average_heartrate": "140"
-    },
-    {
-      "title": "Tempo Ride",
-      "description": "Ride at a challenging but sustainable pace.",
-      "date": "2025-05-02",
+      "title": "Climbing Intervals",
+      "description": "Focus on hill repeats to improve climbing strength.",
+      "date": "2025-04-04",
       "duration": "90",
-      "distance_km": "50",
-      "elevation_gain": "300",
-      "average_speed": "33",
-      "average_heartrate": "145"
-    },
-    {
-      "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-03",
-      "duration": "0",
-      "distance_km": "0",
-      "elevation_gain": "0",
-      "average_speed": "0",
-      "average_heartrate": "0"
-    },
-    {
-      "title": "Climbing Ride",
-      "description": "Focus on long climbs to improve climbing ability.",
-      "date": "2025-05-04",
-      "duration": "150",
-      "distance_km": "60",
-      "elevation_gain": "1000",
-      "average_speed": "24",
-      "average_heartrate": "150"
-    },
-    {
-      "title": "Recovery Ride",
-      "description": "Easy ride to aid recovery.",
-      "date": "2025-05-05",
-      "duration": "45",
-      "distance_km": "20",
-      "elevation_gain": "100",
-      "average_speed": "15",
-      "average_heartrate": "120"
-    },
-    {
-      "title": "Hill Repeats",
-      "description": "Intense hill repeats to build climbing strength.",
-      "date": "2025-05-06",
-      "duration": "75",
-      "distance_km": "25",
-      "elevation_gain": "500",
-      "average_speed": "20",
-      "average_heartrate": "155"
-    },
-    {
-      "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-07",
-      "duration": "0",
-      "distance_km": "0",
-      "elevation_gain": "0",
-      "average_speed": "0",
-      "average_heartrate": "0"
-    },
-    {
-      "title": "Endurance Ride",
-      "description": "Long steady ride to build endurance.",
-      "date": "2025-05-08",
-      "duration": "240",
-      "distance_km": "110",
+      "distance_km": "40",
       "elevation_gain": "800",
-      "average_speed": "28",
-      "average_heartrate": "140"
-    },
-    {
-      "title": "Tempo Ride",
-      "description": "Ride at a challenging but sustainable pace.",
-      "date": "2025-05-09",
-      "duration": "90",
-      "distance_km": "50",
-      "elevation_gain": "300",
-      "average_speed": "33",
-      "average_heartrate": "145"
-    },
-    {
-      "title": "Recovery Ride",
-      "description": "Easy ride to aid recovery.",
-      "date": "2025-05-10",
-      "duration": "45",
-      "distance_km": "20",
-      "elevation_gain": "100",
-      "average_speed": "15",
-      "average_heartrate": "120"
-    },
-    {
-      "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-11",
-      "duration": "0",
-      "distance_km": "0",
-      "elevation_gain": "0",
-      "average_speed": "0",
-      "average_heartrate": "0"
-    },
-    {
-      "title": "Climbing Ride",
-      "description": "Focus on long climbs to improve climbing ability.",
-      "date": "2025-05-12",
-      "duration": "150",
-      "distance_km": "60",
-      "elevation_gain": "1200",
-      "average_speed": "24",
+      "average_speed": "26.7",
       "average_heartrate": "150"
     },
     {
-      "title": "Hill Repeats",
-      "description": "Intense hill repeats to build climbing strength.",
-      "date": "2025-05-13",
-      "duration": "75",
-      "distance_km": "25",
-      "elevation_gain": "500",
-      "average_speed": "20",
-      "average_heartrate": "155"
-    },
-    {
       "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-14",
+      "description": "Take a day off to allow your body to rest.",
+      "date": "2025-04-05",
       "duration": "0",
       "distance_km": "0",
       "elevation_gain": "0",
@@ -192,39 +53,29 @@
       "average_heartrate": "0"
     },
     {
-      "title": "Endurance Ride",
-      "description": "Long steady ride to build endurance.",
-      "date": "2025-05-15",
-      "duration": "240",
-      "distance_km": "120",
-      "elevation_gain": "1000",
-      "average_speed": "30",
-      "average_heartrate": "140"
-    },
-    {
       "title": "Tempo Ride",
-      "description": "Ride at a challenging but sustainable pace.",
-      "date": "2025-05-16",
-      "duration": "90",
-      "distance_km": "50",
+      "description": "Sustained effort at a moderate pace to improve speed.",
+      "date": "2025-04-06",
+      "duration": "120",
+      "distance_km": "60",
       "elevation_gain": "300",
-      "average_speed": "33",
+      "average_speed": "30",
       "average_heartrate": "145"
     },
     {
       "title": "Recovery Ride",
-      "description": "Easy ride to aid recovery.",
-      "date": "2025-05-17",
-      "duration": "45",
-      "distance_km": "20",
+      "description": "Easy ride to promote blood flow and recovery.",
+      "date": "2025-04-07",
+      "duration": "60",
+      "distance_km": "25",
       "elevation_gain": "100",
-      "average_speed": "15",
-      "average_heartrate": "120"
+      "average_speed": "25",
+      "average_heartrate": "130"
     },
     {
       "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-18",
+      "description": "Complete rest to recover fully.",
+      "date": "2025-04-08",
       "duration": "0",
       "distance_km": "0",
       "elevation_gain": "0",
@@ -232,29 +83,19 @@
       "average_heartrate": "0"
     },
     {
-      "title": "Climbing Ride",
-      "description": "Focus on long climbs to improve climbing ability.",
-      "date": "2025-05-19",
-      "duration": "150",
-      "distance_km": "70",
-      "elevation_gain": "1400",
+      "title": "Strength Ride",
+      "description": "Ride with a focus on strength training and intervals.",
+      "date": "2025-04-09",
+      "duration": "120",
+      "distance_km": "50",
+      "elevation_gain": "600",
       "average_speed": "25",
       "average_heartrate": "150"
     },
     {
-      "title": "Hill Repeats",
-      "description": "Intense hill repeats to build climbing strength.",
-      "date": "2025-05-20",
-      "duration": "90",
-      "distance_km": "30",
-      "elevation_gain": "600",
-      "average_speed": "20",
-      "average_heartrate": "155"
-    },
-    {
       "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-21",
+      "description": "Day off to rest and prepare for the next ride.",
+      "date": "2025-04-10",
       "duration": "0",
       "distance_km": "0",
       "elevation_gain": "0",
@@ -263,38 +104,198 @@
     },
     {
       "title": "Endurance Ride",
-      "description": "Long steady ride to build endurance.",
-      "date": "2025-05-22",
-      "duration": "300",
-      "distance_km": "150",
-      "elevation_gain": "1200",
-      "average_speed": "30",
+      "description": "Long distance ride to build stamina.",
+      "date": "2025-04-11",
+      "duration": "180",
+      "distance_km": "85",
+      "elevation_gain": "500",
+      "average_speed": "28.3",
       "average_heartrate": "140"
     },
     {
+      "title": "Recovery Day",
+      "description": "Easy day to help muscles recover.",
+      "date": "2025-04-12",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Hill Sprints",
+      "description": "Short, intense uphill sprints to build power.",
+      "date": "2025-04-13",
+      "duration": "60",
+      "distance_km": "30",
+      "elevation_gain": "400",
+      "average_speed": "30",
+      "average_heartrate": "155"
+    },
+    {
+      "title": "Rest Day",
+      "description": "Rest day to allow for recovery.",
+      "date": "2025-04-14",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
       "title": "Tempo Ride",
-      "description": "Ride at a challenging but sustainable pace.",
-      "date": "2025-05-23",
-      "duration": "90",
-      "distance_km": "50",
-      "elevation_gain": "300",
-      "average_speed": "33",
+      "description": "Steady ride at a moderate pace for endurance.",
+      "date": "2025-04-15",
+      "duration": "120",
+      "distance_km": "65",
+      "elevation_gain": "350",
+      "average_speed": "32.5",
       "average_heartrate": "145"
     },
     {
       "title": "Recovery Ride",
-      "description": "Easy ride to aid recovery.",
-      "date": "2025-05-24",
-      "duration": "45",
-      "distance_km": "20",
+      "description": "Gentle ride to promote recovery and blood flow.",
+      "date": "2025-04-16",
+      "duration": "60",
+      "distance_km": "25",
       "elevation_gain": "100",
-      "average_speed": "15",
-      "average_heartrate": "120"
+      "average_speed": "25",
+      "average_heartrate": "130"
     },
     {
       "title": "Rest Day",
-      "description": "Take a complete rest to recover from previous rides.",
-      "date": "2025-05-25",
+      "description": "Full rest to recover and prepare for training.",
+      "date": "2025-04-17",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Climbing Intervals",
+      "description": "Intense climbing workout to improve hill performance.",
+      "date": "2025-04-18",
+      "duration": "90",
+      "distance_km": "45",
+      "elevation_gain": "850",
+      "average_speed": "30",
+      "average_heartrate": "150"
+    },
+    {
+      "title": "Rest Day",
+      "description": "Take a break to allow your body to recover.",
+      "date": "2025-04-19",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Endurance Ride",
+      "description": "Focus on maintaining a steady pace over a long distance.",
+      "date": "2025-04-20",
+      "duration": "180",
+      "distance_km": "90",
+      "elevation_gain": "550",
+      "average_speed": "30",
+      "average_heartrate": "140"
+    },
+    {
+      "title": "Recovery Day",
+      "description": "Rest and recover from the previous rides.",
+      "date": "2025-04-21",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Hill Repeats",
+      "description": "Practice on hills to build climbing strength.",
+      "date": "2025-04-22",
+      "duration": "90",
+      "distance_km": "40",
+      "elevation_gain": "900",
+      "average_speed": "26.7",
+      "average_heartrate": "150"
+    },
+    {
+      "title": "Rest Day",
+      "description": "Take a day off to rest and recover.",
+      "date": "2025-04-23",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Tempo Ride",
+      "description": "Maintain a moderate pace to build endurance.",
+      "date": "2025-04-24",
+      "duration": "120",
+      "distance_km": "70",
+      "elevation_gain": "400",
+      "average_speed": "35",
+      "average_heartrate": "145"
+    },
+    {
+      "title": "Recovery Ride",
+      "description": "Easy ride to help muscles recover.",
+      "date": "2025-04-25",
+      "duration": "60",
+      "distance_km": "30",
+      "elevation_gain": "100",
+      "average_speed": "30",
+      "average_heartrate": "130"
+    },
+    {
+      "title": "Rest Day",
+      "description": "Rest to prepare for the next week of training.",
+      "date": "2025-04-26",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Strength Ride",
+      "description": "Incorporate interval training to improve strength.",
+      "date": "2025-04-27",
+      "duration": "120",
+      "distance_km": "55",
+      "elevation_gain": "650",
+      "average_speed": "27.5",
+      "average_heartrate": "150"
+    },
+    {
+      "title": "Rest Day",
+      "description": "Rest and recover to maintain peak performance.",
+      "date": "2025-04-28",
+      "duration": "0",
+      "distance_km": "0",
+      "elevation_gain": "0",
+      "average_speed": "0",
+      "average_heartrate": "0"
+    },
+    {
+      "title": "Endurance Ride",
+      "description": "Long ride to build stamina and endurance.",
+      "date": "2025-04-29",
+      "duration": "180",
+      "distance_km": "95",
+      "elevation_gain": "600",
+      "average_speed": "31.7",
+      "average_heartrate": "140"
+    },
+    {
+      "title": "Recovery Day",
+      "description": "Easy day to allow for muscle recovery.",
+      "date": "2025-04-30",
       "duration": "0",
       "distance_km": "0",
       "elevation_gain": "0",
@@ -302,5 +303,5 @@
       "average_heartrate": "0"
     }
   ],
-  "goal": "Prepare for a Himalayan race in August by increasing endurance, climbing ability, and overall fitness."
+  "goal": "Prepare for the Himalayan race in August by building endurance, strength, and climbing ability through a structured training plan."
 }

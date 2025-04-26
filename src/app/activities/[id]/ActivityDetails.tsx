@@ -129,7 +129,7 @@ export function ActivityDetails({ id }: { id: string }) {
       <div className="rounded-xl border-4 border-black bg-cyan-200 p-8">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="mb-4 text-4xl font-black">{activity.name} ⛰️</h1>
+          <h1 className="mb-4 text-4xl font-black">{activity.name} </h1>
           <div className="flex flex-wrap gap-3">
             <span className="inline-block rounded-lg bg-white px-3 py-1 text-sm font-bold">
               {new Date(activity.start_date_local).toLocaleString()}
