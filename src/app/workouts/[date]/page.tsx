@@ -1,9 +1,13 @@
 "use client";
 
-import samplePlan from "@/lib/sample-plan.json";
+import type { FitnessOutput } from "@/lib/zod-types";
+// import samplePlan from "@/lib/sample-plan.json";
 import { format } from "date-fns";
 import { useParams } from "next/navigation";
 import { z } from "zod";
+const samplePlan = JSON.parse(
+  localStorage.getItem("training_plan") ?? "{}",
+) as FitnessOutput;
 
 // Define a schema for the workout plan data from sample-plan.json
 const workoutSchema = z.object({

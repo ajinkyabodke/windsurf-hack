@@ -1,14 +1,18 @@
 "use client";
 
 import { ConversationInterface } from "@/components/ConversationInterface";
-import samplePlan from "@/lib/sample-plan.json";
+// import samplePlan from "@/lib/sample-plan.json";
 import {
   type StravaActivity,
   type StravaProfile,
   type StravaStats,
 } from "@/lib/types";
+import type { FitnessOutput } from "@/lib/zod-types";
 import Link from "next/link";
 import { useState } from "react";
+const samplePlan = JSON.parse(
+  localStorage.getItem("training_plan") ?? "{}",
+) as FitnessOutput;
 
 type DashboardProps = {
   stravaData?: {
