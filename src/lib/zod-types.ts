@@ -1,9 +1,10 @@
 import { z } from "zod";
+import { athleteActivitySchema } from "./types";
 
 // last 30 days plan and data.
 export const FitnessInput = z.object({
+  activities: z.array(athleteActivitySchema),
   transcript: z.string(),
-  current_data: z.string().nullish().describe("data of last 30 days"),
   current_plan: z.string().nullish().describe("plan of last 30 days"),
   goal: z.object({ name: z.string(), created_on: z.string() }).nullish(),
 });
