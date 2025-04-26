@@ -4,6 +4,7 @@ import { analyzeConversation } from "@/actions/ai";
 import { RecordButton } from "@/components/RecordButton";
 import { Button } from "@/components/ui/button";
 import { USER_PROFILE } from "@/lib/constants";
+import { athleteActivitySchema } from "@/lib/types";
 import { useConversation } from "@11labs/react";
 import { LucideX } from "lucide-react";
 import { motion } from "motion/react";
@@ -39,7 +40,15 @@ export default function Home() {
     onDisconnect: (props: unknown) => {
       console.log("Disconnected from ElevenLabs", props);
 
+      const userActivities = localStorage.getItem(
+        "strava_data_recent_activities",
+      );
+      const activities = athleteActivitySchema
+        .array()
+        .parse(userActivities ?? []);
+
       void analyzeConversation({
+        activities,
         transcript: transcriptRef.current.messages
           .map((message) => message.message)
           .join("\n"),
@@ -85,7 +94,13 @@ export default function Home() {
   });
 
   const getSystemPrompt = () => {
+    const userActivities = localStorage.getItem(
+      "strava_data_recent_activities",
+    );
+    const activities = athleteActivitySchema.parse(userActivities);
+
     const basePrompt = `You are PsyCoach, an AI voice assistant specializing in holistic cycling training with emphasis on both physical and psychological aspects of performance. Your purpose is to gather relevant information about the user's cycling goals, physical state, and mental condition to inform training plan creation or updates (which will happen outside of your conversation).
+
 Core Interaction Flow
 
 Begin each conversation with a friendly greeting and initial assessment:
@@ -116,8 +131,6 @@ Once you have gathered sufficient information (after 3-4 questions maximum), con
 For new goals: "I will now create a new plan for you based on what you've shared."
 For check-ins/adjustments: "Got it, I will now update your plan after considering what you've told me."
 
-
-
 Conversation Management
 
 Keep questions concise and focused on gathering actionable information
@@ -142,8 +155,12 @@ The user reports challenges with their current plan
 
 DO NOT GET THE ABOVE 2 OPTIONS WRONG. IF USER IS CREATING A NEW GOAL, YOU HAVE TO TELL THEM THAT YOU WILL CREATE A NEW PLAN FOR THEM. IF USER IS CHECKING IN, YOU HAVE TO TELL THEM THAT YOU WILL UPDATE THEIR PLAN AFTER CONSIDERING WHAT THEY HAVE TOLD YOU. THIS IS VERY IMPORTANT. DO NOT MESS IT UP. A CUTE PUPPY WILL DIE IF YOU DO
 
-
 Remember that your role is to efficiently gather information and close the conversation appropriately. The actual plan creation or modification will happen separately using the conversation transcript.
+
+----
+
+User Activities
+${JSON.stringify(activities)}
 `;
 
     return `${basePrompt}`;

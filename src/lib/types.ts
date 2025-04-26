@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export type OverallStats = {
   biggest_ride_distance: number;
   biggest_climb_elevation_gain: number;
@@ -42,7 +44,7 @@ export type AthleteProfile = {
   summit?: boolean;
 };
 
-export type AthleteActivity = {
+export type _AthleteActivity = {
   resource_state: number;
   athlete: Athlete;
   name: string;
@@ -114,6 +116,36 @@ export type AthleteActivity = {
   segment_leaderboard_opt_out?: boolean;
   leaderboard_opt_out?: boolean;
 };
+
+export const athleteActivitySchema = z.object({
+  name: z.string(),
+  distance: z.number(),
+  moving_time: z.number(),
+  elapsed_time: z.number(),
+  total_elevation_gain: z.number(),
+
+  start_date_local: z.unknown(),
+
+  average_speed: z.number(),
+
+  average_cadence: z.number().optional(),
+  average_watts: z.number().optional(),
+  weighted_average_watts: z.number().optional(),
+  kilojoules: z.number().optional(),
+  device_watts: z.boolean().optional(),
+
+  elev_high: z.number().optional(),
+  elev_low: z.number().optional(),
+
+  average_heartrate: z.number().optional(),
+  max_heartrate: z.number().optional(),
+  max_watts: z.number().optional(),
+
+  description: z.string().optional(),
+  calories: z.number().optional(),
+});
+
+export type AthleteActivity = z.infer<typeof athleteActivitySchema>;
 
 export type Athlete = {
   id: number;
