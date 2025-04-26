@@ -5,10 +5,6 @@ import { type Activity } from "@/lib/types";
 import type { FitnessOutput } from "@/lib/zod-types";
 import { useEffect, useState } from "react";
 
-const samplePlan = JSON.parse(
-  localStorage.getItem("training_plan") ?? "{}",
-) as FitnessOutput;
-
 type WorkoutPlan = {
   title: string;
   description: string;
@@ -91,6 +87,10 @@ export function ActivityDetails({ id }: { id: string }) {
       }
 
       setActivity(foundActivity);
+
+      const samplePlan = JSON.parse(
+        localStorage.getItem("training_plan") ?? "{}",
+      ) as FitnessOutput;
 
       // Find matching planned workout
       const activityDate = new Date(foundActivity.start_date);

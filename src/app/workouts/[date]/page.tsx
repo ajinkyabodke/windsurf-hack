@@ -5,9 +5,6 @@ import type { FitnessOutput } from "@/lib/zod-types";
 import { format } from "date-fns";
 import { useParams } from "next/navigation";
 import { z } from "zod";
-const samplePlan = JSON.parse(
-  localStorage.getItem("training_plan") ?? "{}",
-) as FitnessOutput;
 
 // Define a schema for the workout plan data from sample-plan.json
 const workoutSchema = z.object({
@@ -28,6 +25,10 @@ type WorkoutPlan = z.infer<typeof workoutSchema>;
 export default function WorkoutPage() {
   const params = useParams();
   const date = params.date as string;
+
+  const samplePlan = JSON.parse(
+    localStorage.getItem("training_plan") ?? "{}",
+  ) as FitnessOutput;
 
   // Find the workout for this date in sample-plan.json
   const workout = samplePlan.day_wise.find((w) => w.date === date);

@@ -10,9 +10,6 @@ import {
 import type { FitnessOutput } from "@/lib/zod-types";
 import Link from "next/link";
 import { useState } from "react";
-const samplePlan = JSON.parse(
-  localStorage.getItem("training_plan") ?? "{}",
-) as FitnessOutput;
 
 type DashboardProps = {
   stravaData?: {
@@ -231,6 +228,10 @@ function ActivityCalendar({
     },
     {},
   );
+
+  const samplePlan = JSON.parse(
+    localStorage.getItem("training_plan") ?? "{}",
+  ) as FitnessOutput;
 
   // Group planned workouts by date
   const plannedWorkoutMap = samplePlan.day_wise.reduce<
