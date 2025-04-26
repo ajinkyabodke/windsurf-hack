@@ -4,8 +4,10 @@ import { analyzeConversation } from "@/actions/ai";
 import { RecordButton } from "@/components/RecordButton";
 import { Button } from "@/components/ui/button";
 import { USER_PROFILE } from "@/lib/constants";
+import { dataAtom } from "@/lib/store";
 import { athleteActivitySchema } from "@/lib/types";
 import { useConversation } from "@11labs/react";
+import { useAtom } from "jotai";
 import { LucideX } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef, useState } from "react";
@@ -30,6 +32,9 @@ export default function Home() {
   const [transcript, setTranscript] = useState<ConversationTranscript>({
     messages: [],
   });
+
+  const [data, setData] = useAtom(dataAtom);
+
   const user = USER_PROFILE;
   const name = user.name;
 
@@ -37,7 +42,7 @@ export default function Home() {
     onConnect: () => {
       console.log("Connected to ElevenLabs");
     },
-    onDisconnect: (props: unknown) => {
+    onDisconnect: async (props: unknown) => {
       console.log("Disconnected from ElevenLabs", props);
 
       const userActivities = localStorage.getItem(
@@ -47,12 +52,14 @@ export default function Home() {
         .array()
         .parse(userActivities ?? []);
 
-      void analyzeConversation({
+      const result = await analyzeConversation({
         activities,
         transcript: transcriptRef.current.messages
           .map((message) => message.message)
           .join("\n"),
       });
+
+      setData(result.result);
     },
     onMessage: async (message: Message) => {
       console.log("Received message:", message);

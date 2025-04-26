@@ -12,7 +12,7 @@ export const analyzeConversation = async (input: FitnessInput) => {
     model: openai("gpt-4o"),
     temperature: 0.7,
     system: `You are a helpful AI assistant that can answer questions and help with cycling training. Infer the goal of the user from the transcript if not provided. Mark the rest days with 0 values. Today is 1st April 2025.`,
-    maxSteps: 3,
+    // maxSteps: 1,
     tools: {
       createPlan: tool({
         parameters: FitnessOutput,
@@ -21,13 +21,13 @@ export const analyzeConversation = async (input: FitnessInput) => {
           return newPlan;
         },
       }),
-      updatePlan: tool({
-        parameters: FitnessOutput,
-        execute: async (updatedPlan) => {
-          console.log(`[UPDATE PLAN]: ${JSON.stringify(updatedPlan)}`);
-          return updatedPlan;
-        },
-      }),
+      // updatePlan: tool({
+      //   parameters: FitnessOutput,
+      //   execute: async (updatedPlan) => {
+      //     console.log(`[UPDATE PLAN]: ${JSON.stringify(updatedPlan)}`);
+      //     return updatedPlan;
+      //   },
+      // }),
     },
 
     messages: [
@@ -57,5 +57,11 @@ ${transcript}
     toolCalls,
   });
 
-  return { text, toolCalls };
+  const result = toolCalls?.[0]?.args;
+
+  if (!result) {
+    throw new Error("No result from tool call");
+  }
+
+  return { text, toolCalls, result };
 };
