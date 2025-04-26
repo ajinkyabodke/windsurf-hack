@@ -11,18 +11,26 @@ export const FitnessInput = z.object({
 export type FitnessInput = z.infer<typeof FitnessInput>;
 
 export const FitnessOutput = z.object({
-  plan: z.object({
-    duration: z.string().describe("duration of the plan in minutes"),
-    distance_km: z.string().describe("distance of the plan in kilometers"),
-    description: z
-      .string()
-      .describe(
-        "description of how the plan will help the user achieve their goal",
-      ),
-    elevation_gain: z.string().describe("elevation gain in meters"),
-    average_speed: z.string().describe("average speed in km/h"),
-    average_heartrate: z.string().describe("average heartrate in bpm"),
-  }),
+  plan: z
+    .string()
+    .describe(
+      "description of how the plan will help the user achieve their goal",
+    ),
+
+  day_wise: z
+    .object({
+      title: z.string().describe("title of the activity to be shown on Strava"),
+      description: z.string().describe("short concise description of the day"),
+      date: z.string().describe("date of the plan in format YYYY-MM-DD"),
+      duration: z.string().describe("duration of the plan in minutes"),
+      distance_km: z.string().describe("distance of the plan in kilometers"),
+      elevation_gain: z.string().describe("elevation gain in meters"),
+      average_speed: z.string().describe("average speed in km/h"),
+      average_heartrate: z.string().describe("average heartrate in bpm"),
+    })
+    .describe("day wise plan for the next 30 days")
+    .array(),
+
   goal: z.string().describe("goal of the user."),
 });
 
