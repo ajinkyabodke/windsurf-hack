@@ -289,3 +289,74 @@ export type StravaProfile = {
   country: string;
   profile: string;
 };
+
+export type Activity = {
+  id: number;
+  name: string;
+  distance: number;
+  moving_time: number;
+  elapsed_time: number;
+  type: string;
+  sport_type: string;
+  start_date: string;
+  start_date_local: string;
+  timezone: string;
+  utc_offset: number;
+  start_latlng?: number[] | null;
+  end_latlng?: number[] | null;
+  total_elevation_gain: number;
+  elev_high?: number;
+  elev_low?: number;
+  average_speed: number;
+  max_speed: number;
+  average_watts?: number;
+  weighted_average_watts?: number;
+  kilojoules?: number;
+  device_watts?: boolean;
+  average_heartrate?: number;
+  max_heartrate?: number;
+  average_cadence?: number;
+  max_watts?: number;
+  calories?: number;
+  description?: string;
+  photos?: {
+    primary?: {
+      urls: Record<string, string>;
+    };
+    count: number;
+  };
+  map?: {
+    id?: string;
+    polyline?: string;
+    summary_polyline: string;
+  };
+  gear?: {
+    id: string;
+    name: string;
+    distance?: number;
+  };
+  private: boolean;
+  visibility?: string;
+  flagged: boolean;
+  workout_type?: number;
+  upload_id?: number;
+  external_id?: string;
+  from_accepted_tag?: boolean;
+  has_kudoed?: boolean;
+  kudos_count?: number;
+  comment_count?: number;
+  athlete_count?: number;
+  photo_count?: number;
+  trainer?: boolean;
+  commute?: boolean;
+  manual?: boolean;
+  device_name?: string;
+  embed_token?: string;
+  achievement_count?: number;
+  kudos?: Array<{
+    destination_url: string;
+    display_name: string;
+    avatar_url: string;
+    show_name: boolean;
+  }>;
+};

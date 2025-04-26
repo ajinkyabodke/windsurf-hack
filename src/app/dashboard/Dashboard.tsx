@@ -5,6 +5,7 @@ import {
   type StravaProfile,
   type StravaStats,
 } from "@/lib/types";
+import Link from "next/link";
 import { useState } from "react";
 
 type DashboardProps = {
@@ -308,20 +309,26 @@ function ActivityCalendar({
 
         <div className="mt-1 max-h-16 overflow-y-auto">
           {activitiesOnDay.slice(0, 2).map((activity) => (
-            <div
+            <Link
               key={activity.id}
-              className="mb-1 rounded-md border-2 border-black bg-white p-1 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              href={`/activities/${activity.id}`}
+              className="block"
             >
-              <div className="truncate font-bold">{activity.name}</div>
-              <div className="font-bold text-blue-600">
-                {(activity.distance / 1000).toFixed(1)} km
+              <div className="mb-1 rounded-md border-2 border-black bg-white p-1 text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+                <div className="truncate font-bold">{activity.name}</div>
+                <div className="font-bold text-blue-600">
+                  {(activity.distance / 1000).toFixed(1)} km
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
           {activitiesOnDay.length > 2 && (
-            <div className="inline-block -rotate-2 transform bg-black px-1 py-0.5 text-xs font-bold text-white">
+            <Link
+              href={`/dashboard?date=${selectedYear}-${selectedMonth + 1}-${day}`}
+              className="inline-block -rotate-2 transform bg-black px-1 py-0.5 text-xs font-bold text-white transition-all hover:rotate-0"
+            >
               +{activitiesOnDay.length - 2} more
-            </div>
+            </Link>
           )}
         </div>
       </div>,
