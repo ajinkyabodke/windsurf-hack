@@ -1,5 +1,6 @@
 "use client";
 
+import { analyzeConversation } from "@/actions/ai";
 import { RecordButton } from "@/components/RecordButton";
 import { Button } from "@/components/ui/button";
 import { USER_PROFILE } from "@/lib/constants";
@@ -37,6 +38,12 @@ export default function Home() {
     },
     onDisconnect: (props: unknown) => {
       console.log("Disconnected from ElevenLabs", props);
+
+      void analyzeConversation({
+        transcript: transcriptRef.current.messages
+          .map((message) => message.message)
+          .join("\n"),
+      });
     },
     onMessage: async (message: Message) => {
       console.log("Received message:", message);
