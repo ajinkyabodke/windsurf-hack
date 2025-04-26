@@ -109,12 +109,13 @@ export function RecordButton({
     };
   }, [isRecording]);
 
+  // ... existing code ...
   return (
     <div className="relative flex h-16 items-center justify-center">
       <div
         className={cn(
-          "flex items-center justify-center transition-transform duration-300 ease-in-out",
-          isRecording ? "-translate-x-8" : "",
+          "flex items-center transition-transform duration-300 ease-in-out",
+          // Remove the translation since we don't need it
         )}
       >
         <PulsatingButton
@@ -149,11 +150,12 @@ export function RecordButton({
           className={cn(
             "group relative flex size-16 items-center justify-center rounded-full transition-all duration-300 ease-in-out",
             isRecording
-              ? "bg-destructive text-destructive-foreground hover:bg-destructive/90 scale-100"
-              : "text-primary-foreground hover:bg-primary/90 scale-125 bg-gradient-to-r from-cyan-900 to-sky-900",
+              ? "bg-destructive text-destructive-foreground hover:bg-destructive/90 scale-90"
+              : "text-primary-foreground hover:bg-primary/90 scale-110 bg-gradient-to-r from-cyan-900 to-sky-900",
             disabled && "pointer-events-none opacity-50",
           )}
         >
+          {/* Rest of the button remains the same */}
           {/* Outer ring animation */}
           <div
             className={cn(
