@@ -45,7 +45,7 @@ function ComparisonStat({
           </div>
         </div>
         <div
-          className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-black ${
+          className={`flex h-12 w-12 items-center justify-center rounded-full border-2 border-black ${
             isPositive ? "bg-green-200" : "bg-red-200"
           }`}
         >

@@ -1,151 +1,120 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import samplePlan from "@/lib/sample-plan.json";
 import { format } from "date-fns";
 import { useParams } from "next/navigation";
 import { z } from "zod";
 
-// Sample workout plan data - in a real app, this would come from an API
-const workoutPlanSchema = z.object({
+// Define a schema for the workout plan data from sample-plan.json
+const workoutSchema = z.object({
   title: z.string(),
   description: z.string(),
-  date: z.string(),
-  targetMetrics: z.object({
-    duration: z.number(),
-    distance: z.number(),
-    elevationGain: z.number(),
-    avgSpeed: z.number(),
-    avgHeartRate: z.number(),
+  date: z.string().refine((date) => !isNaN(new Date(date).getTime()), {
+    message: "Invalid date format",
   }),
-  trainingPlanContext: z.string(),
-  tips: z.array(z.string()),
+  duration: z.string(),
+  distance_km: z.string(),
+  elevation_gain: z.string(),
+  average_speed: z.string(),
+  average_heartrate: z.string(),
 });
 
-type WorkoutPlan = z.infer<typeof workoutPlanSchema>;
-
-const samplePlan: WorkoutPlan = {
-  title: "Long Endurance Ride",
-  description:
-    "Focus on maintaining a steady pace throughout the ride. This workout helps build your aerobic base and improves fat metabolism.",
-  date: "2024-03-20",
-  targetMetrics: {
-    duration: 180, // minutes
-    distance: 60, // kilometers
-    elevationGain: 800, // meters
-    avgSpeed: 28, // km/h
-    avgHeartRate: 145, // bpm
-  },
-  trainingPlanContext: "Part of base training phase - Week 8/12",
-  tips: [
-    "Stay in Zone 2 heart rate for 80% of the ride",
-    "Take regular sips of water every 15 minutes",
-    "Consume 40-60g of carbs per hour",
-    "Focus on smooth pedaling technique",
-  ],
-};
+type WorkoutPlan = z.infer<typeof workoutSchema>;
 
 export default function WorkoutPage() {
   const params = useParams();
   const date = params.date as string;
 
-  // In a real app, we would fetch the workout plan based on the date
-  const workout = samplePlan;
+  // Find the workout for this date in sample-plan.json
+  const workout = samplePlan.day_wise.find((w) => w.date === date);
 
   if (!workout) {
     return (
       <div className="container mx-auto px-4">
-        <h1 className="text-2xl font-bold text-red-600">Workout not found</h1>
+        <div className="rounded-xl border-4 border-black bg-red-300 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h1 className="text-2xl font-black">Workout not found</h1>
+          <p className="mt-2 font-bold">Could not find a workout for {date}</p>
+        </div>
       </div>
     );
   }
 
+  // Parse the workout data with validation
+  const result = workoutSchema.safeParse(workout);
+
+  if (!result.success) {
+    return (
+      <div className="container mx-auto px-4">
+        <div className="rounded-xl border-4 border-black bg-red-300 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h1 className="text-2xl font-black">Invalid Workout Data</h1>
+          <p className="mt-2 font-bold">The workout data is invalid</p>
+        </div>
+      </div>
+    );
+  }
+
+  const parsedWorkout = result.data;
+  const workoutDate = new Date(parsedWorkout.date);
+
   return (
-    <div className="container mx-auto space-y-6 px-4">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold tracking-tight">{workout.title}</h1>
-        <p className="text-lg text-zinc-600">
-          {format(new Date(workout.date), "EEEE, MMMM d, yyyy")}
+    <div className="container mx-auto px-4 py-8">
+      {/* Header Section */}
+      <div className="mb-8 rounded-xl border-4 border-black bg-emerald-200 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h1 className="mb-2 text-4xl font-black tracking-tight">
+          {parsedWorkout.title}
+        </h1>
+        <p className="text-xl font-bold">
+          {format(workoutDate, "EEEE, MMMM d, yyyy")}
         </p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Workout Description</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-zinc-600">{workout.description}</p>
-          </CardContent>
-        </Card>
+        {/* Workout Description */}
+        <div className="rounded-xl border-4 border-black bg-yellow-200 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h2 className="mb-4 text-2xl font-black">Workout Description</h2>
+          <p className="text-xl font-bold">{parsedWorkout.description}</p>
+        </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Target Metrics</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-zinc-500">Duration</p>
-                <p className="text-xl font-semibold">
-                  {workout.targetMetrics.duration} min
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-zinc-500">Distance</p>
-                <p className="text-xl font-semibold">
-                  {workout.targetMetrics.distance} km
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-zinc-500">Elevation Gain</p>
-                <p className="text-xl font-semibold">
-                  {workout.targetMetrics.elevationGain} m
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-zinc-500">Avg Speed</p>
-                <p className="text-xl font-semibold">
-                  {workout.targetMetrics.avgSpeed} km/h
-                </p>
-              </div>
-              {workout.targetMetrics.avgHeartRate > 0 && (
-                <div>
-                  <p className="text-sm text-zinc-500">Target Heart Rate</p>
-                  <p className="text-xl font-semibold">
-                    {workout.targetMetrics.avgHeartRate} bpm
-                  </p>
-                </div>
-              )}
+        {/* Target Metrics */}
+        <div className="rounded-xl border-4 border-black bg-cyan-200 p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h2 className="mb-4 text-2xl font-black">Target Metrics</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <p className="text-sm font-bold text-gray-600">Duration</p>
+              <p className="text-2xl font-black">
+                {parsedWorkout.duration} min
+              </p>
             </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Training Plan Context</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Badge variant="outline" className="mb-4">
-              {workout.trainingPlanContext}
-            </Badge>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Training Tips</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc space-y-2 pl-4">
-              {workout.tips.map((tip, index) => (
-                <li key={index} className="text-zinc-600">
-                  {tip}
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+            <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <p className="text-sm font-bold text-gray-600">Distance</p>
+              <p className="text-2xl font-black">
+                {parsedWorkout.distance_km} km
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <p className="text-sm font-bold text-gray-600">Elevation Gain</p>
+              <p className="text-2xl font-black">
+                {parsedWorkout.elevation_gain} m
+              </p>
+            </div>
+            <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <p className="text-sm font-bold text-gray-600">Avg Speed</p>
+              <p className="text-2xl font-black">
+                {parsedWorkout.average_speed} km/h
+              </p>
+            </div>
+            {Number(parsedWorkout.average_heartrate) > 0 && (
+              <div className="col-span-2 rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <p className="text-sm font-bold text-gray-600">
+                  Target Heart Rate
+                </p>
+                <p className="text-2xl font-black">
+                  {parsedWorkout.average_heartrate} bpm
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
