@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 type StravaStats = {
   recent_ride_totals?: {
     count: number;
@@ -67,9 +69,15 @@ export function Dashboard({
   athleteId,
   stravaFetchedAt,
 }: DashboardProps) {
+  const [showAllActivities, setShowAllActivities] = useState(false);
   const formattedTime = stravaFetchedAt
     ? new Date(stravaFetchedAt).toLocaleString()
     : "Never";
+
+  // Default to showing 5 activities, or all if button clicked
+  const activitiesToShow = showAllActivities
+    ? stravaData?.activities
+    : stravaData?.activities?.slice(0, 5);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -81,8 +89,7 @@ export function Dashboard({
                 <img
                   src={stravaData.profile.profile}
                   alt="Profile"
-                  fill
-                  style={{ objectFit: "cover" }}
+                  className="h-full w-full object-cover"
                 />
               </div>
             )}
@@ -117,7 +124,7 @@ export function Dashboard({
           {stravaData.activities && stravaData.activities.length > 0 && (
             <div className="mb-8">
               <h3 className="mb-4 text-xl font-semibold">Recent Activities</h3>
-              <div className="overflow-x-auto">
+              <div className="mb-4 overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="bg-gray-100">
@@ -129,7 +136,7 @@ export function Dashboard({
                     </tr>
                   </thead>
                   <tbody>
-                    {stravaData.activities.slice(0, 5).map((activity) => (
+                    {activitiesToShow?.map((activity) => (
                       <tr
                         key={activity.id}
                         className="border-b border-gray-200"
@@ -140,7 +147,7 @@ export function Dashboard({
                           {new Date(activity.start_date).toLocaleDateString()}
                         </td>
                         <td className="p-2 text-right">
-                          {(activity.distance / 1000).toFixed(1)} km
+                          {(activity.distance / 1000).toFixed(2)} km
                         </td>
                         <td className="p-2 text-right">
                           {formatTime(activity.moving_time)}
@@ -150,6 +157,16 @@ export function Dashboard({
                   </tbody>
                 </table>
               </div>
+              {stravaData.activities.length > 5 && (
+                <div className="text-center">
+                  <button
+                    onClick={() => setShowAllActivities(!showAllActivities)}
+                    className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                  >
+                    {showAllActivities ? "Show Less" : "Show More Activities"}
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -159,16 +176,8 @@ export function Dashboard({
               stats={stravaData.stats?.recent_ride_totals}
             />
             <StatsCard
-              title="Recent Runs"
-              stats={stravaData.stats?.recent_run_totals}
-            />
-            <StatsCard
               title="All Rides"
               stats={stravaData.stats?.all_ride_totals}
-            />
-            <StatsCard
-              title="All Runs"
-              stats={stravaData.stats?.all_run_totals}
             />
           </div>
         </div>
@@ -212,7 +221,7 @@ function StatsCard({
         <li className="flex justify-between">
           <span className="text-gray-600">Distance:</span>
           <span className="font-medium">
-            {(stats.distance / 1000).toFixed(1)} km
+            {(stats.distance / 1000).toFixed(2)} km
           </span>
         </li>
         <li className="flex justify-between">
@@ -221,7 +230,9 @@ function StatsCard({
         </li>
         <li className="flex justify-between">
           <span className="text-gray-600">Elevation Gain:</span>
-          <span className="font-medium">{stats.elevation_gain} m</span>
+          <span className="font-medium">
+            {stats.elevation_gain.toFixed(2)} m
+          </span>
         </li>
       </ul>
     </div>
